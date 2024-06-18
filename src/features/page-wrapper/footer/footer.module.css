@@ -1,0 +1,39 @@
+.footer {
+  background-color: #F2F2F2;
+  margin-top: auto;
+}
+
+.footerContainer {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftSection {
+  display: flex;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  color: #424242;
+  font-size: 12px;
+  opacity: 60%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logoText {
+  font-size: 12px;
+  color: #424242;
+  opacity: 60%;
+  text-decoration: none;
+  padding: 8px 24px;
+
+  border-left: 1px solid rgb(66, 66, 66, 0.5);
+}

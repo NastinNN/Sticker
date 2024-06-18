@@ -1,0 +1,12 @@
+.productCard {
+  height: 448px;
+  width: 363px;
+  margin-bottom: 40px;
+
+  background-color: #FFFFFF;
+}
+
+.coverImage img {
+  height: 200px;
+  width: 100%;
+}

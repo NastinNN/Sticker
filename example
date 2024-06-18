@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "category": "clothes",
+        "publication_date": "2024-06-01",
+        "title": "Детский свитер",
+        "image": "https://i.ibb.co/NtrYFDP/2-405ba7b1c7a0bff9683fe8dabfae5a70.jpg",
+        "views": 10,
+        "description": "Детский свитер на девочку 5-7 лет из натуральной шерсти. Новый, не носился, есть бирка",
+        "user": {
+            "fullName": "Мария Макарова",
+            "email": "maria@mail.ru",
+            "phone": "+79200111111",
+            "id": 1
+        }
+    },
+    {
+        "id": 2,
+        "category": "accessories",
+        "publication_date": "2024-06-02",
+        "title": "Сумочка из натуральной кожи",
+        "image": "https://i.ibb.co/P5rgyPL/H87575242e2f3464eaca0e2b87d688acdc.webp",
+        "views": 22,
+        "description": "Сумочка из натуральной кожи. Новая, не носили",
+        "user": {
+            "fullName": "Мария Макарова",
+            "email": "maria@mail.ru",
+            "phone": "+79200111111",
+            "id": 1
+        }
+    },
+    {
+        "id": 3,
+        "category": "household-products",
+        "publication_date": "2024-06-02",
+        "title": "Набор посуды",
+        "image": "https://i.ibb.co/fGVGm6Q/f6067e5dae1207522575de4aabb63397.jpg",
+        "views": 105,
+        "description": "Новый набор посуды. Есть заводская упаковка",
+        "user": {
+            "fullName": "Евгений Алексеев",
+            "email": "alekseev@mail.ru",
+            "phone": "+79200222222",
+            "id": 2
+        }
+    },
+    {
+        "id": 4,
+        "category": "appliances",
+        "publication_date": "2024-06-02",
+        "title": "Стиральная машина Samsung",
+        "image": "https://i.ibb.co/4PSSzvC/stiralnaya-mashina-samsung-wf-s862-160.jpg",
+        "views": 36,
+        "description": "Стиральная машина Samsung. Состояние хорошая, использовали 3 года",
+        "user": {
+            "fullName": "Екатерина Кудрявцева",
+            "email": "alekseev@mail.ru",
+            "phone": "+79200333333",
+            "id": 3
+        }
+    }
+]
+
+
+https://afb2a846cb22a6be.mokky.dev/products?category=clothes
