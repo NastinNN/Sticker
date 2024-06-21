@@ -1,6 +1,7 @@
 import { ProductCard } from 'shared/features/Product/ProductCard';
 import { Product } from 'shared/types/product';
-import s from './productList.module.css'
+
+import s from "./productList.module.css"
 
 type ProductListProps = {
   product: Product[];
@@ -9,7 +10,7 @@ type ProductListProps = {
 export const ProductList = ({ product }: ProductListProps) => {
 
   return (
-    <div className={s.productLiust}>
+    <div className={s.cardList}>
       {product.map((product, index) => (
         <ProductCard productCard={product} key={index} />
       ))}

@@ -1,36 +1,38 @@
+import { useParsDate } from 'hooks/useParsDate';
 import { Link } from 'react-router-dom';
-import { format, parseISO } from 'date-fns';
-import { ru } from 'date-fns/locale';
 import { Product } from 'shared/types/product';
 import { ROUTES } from '../../../../router/routes';
 import s from './productCard.module.css';
+import { useParsCategory } from 'hooks/useParsCategory';
+import { EyeIcon } from 'assets/icons/eyeIcon';
 
 type ProductCardProps = {
   productCard: Product;
 };
 
 export const ProductCard = ({ productCard }: ProductCardProps) => {
-
-  const datePublication = String(productCard.publication_date);
-
   return (
-    <div className={s.productCard}>
+    <Link to={`${ROUTES.PRODUCT}/${productCard.id}`} className={s.productCard}>
       <div className={s.coverImage}>
-        <img src={productCard.image} alt="cover" />
-        <span>{productCard.category}</span>
-      </div>
-      <div className={s.description}>
-        <Link to={`${ROUTES.PRODUCT}/${productCard.id}`}>
-          <h2>{productCard.title}</h2>
-        </Link>
+            <img src={productCard.image} alt="cover" />
+            <div className={s.mark}>{useParsCategory(productCard.category)}</div>
+          </div>
+      <div className={s.content}>
+        <div className={s.Header}>
+          <div className={s.textContent}>
+            <div className={s.title}>{productCard.title}</div>
+            <div className={s.text}>{productCard.description.length > 80 ? (productCard.description.substring(0, 80)+"...") : productCard.description}</div>
+          </div>
+        </div>
 
-        <div className={s.price}>{productCard.price}</div>
-
-        <div className={s.footer}>
-          <div>{productCard.views}</div>
-          <span>{format(parseISO(String(productCard.publication_date)), "d MMMM yyyy", {locale: ru})}</span>
+        <div className={s.textContent}>
+          <div className={s.price}>{productCard.price} Р</div>
+          <div className={s.footer}>
+            <div>{useParsDate(productCard.publication_date)}</div>
+            <div className={s.views}><EyeIcon /> {productCard.views}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

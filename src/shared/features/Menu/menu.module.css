@@ -1,0 +1,79 @@
+.menu {
+  padding: 0;
+  width: 265px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.dropMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: 0.3s;
+
+  z-index: 100;
+}
+
+.dropMenuActive {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuTitle {
+  font-size: 16px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0px 24px 24px;
+}
+
+.menuProfileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgb(29,29,29, 0.5);
+  background-color: #E5E5E5;
+  border-radius: 50%;
+}
+
+.menuItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 24px 0px 24px 24px;
+  color: var(--color-dark-black);
+  stroke: var(--color-dark-black);
+  border-top: 1px solid rgb(52,43,43, 0.1);
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menuItem:hover {
+  background-color: rgb(44,45,46, 0.04);
+}
+
+.menuItemActive {
+  color: var(--color-blue);
+  stroke: var(--color-blue);
+}
+.menuItemActive::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 40px;
+  width: 2px;
+  background-color: var(--color-blue);
+}

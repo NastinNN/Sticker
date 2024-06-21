@@ -14,7 +14,8 @@ export const rootStore = configureStore({
   preloadedState: {
     userData: defineUserDataFromStorage(),
   },
-  middleware: getDefaultMeddleware => getDefaultMeddleware().concat(productsApi.middleware),
+  middleware: getDefaultMeddleware => 
+    getDefaultMeddleware().concat(productsApi.middleware)
 });
 
 export type RootState = ReturnType<typeof rootStore.getState>;

@@ -1,5 +1,6 @@
-.productLiust {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.cardList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 40px 0;
 }

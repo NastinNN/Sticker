@@ -10,7 +10,7 @@ export const PageWrapper = ({ children }: { children: ReactNode }) => {
     <BaseContainer>
       <Header />
 
-        {children}
+        <main>{children}</main>
 
       <Footer />
     </BaseContainer>

@@ -4,7 +4,8 @@ import { STORAGE_KEYS, getStorageItem } from '../../utils/storage';
 import { postAuthData } from './effects';
 
 type User = {
-  fullName: string | null;
+  userName: string | null;
+  userSurname: string | null;
   email: string | null;
   id: number | null;
   token: string | null;
@@ -18,7 +19,8 @@ type UserDataState = {
 
 const initialState: UserDataState = {
   userData: {
-    fullName: null,
+    userName: null,
+    userSurname: null,
     email: null,
     id: null,
     token: null,
@@ -37,7 +39,8 @@ export const userDataSlice = createSlice({
     getToken: state => state.userData.token,
     getIsLoading: state => state.isLoading,
     getUserId: state => state.userData.id,
-    getUserName: state => state.userData.fullName,
+    getUserName: state => state.userData.userName,
+    getUserSurname: state => state.userData.userSurname,
   },
   extraReducers: builder => {
     builder
@@ -57,7 +60,7 @@ export const userDataSlice = createSlice({
 
 export const { clearUserData } = userDataSlice.actions;
 
-export const { getIsLoading, getToken, getUserId, getUserName } = userDataSlice.selectors;
+export const { getIsLoading, getToken, getUserId, getUserName, getUserSurname } = userDataSlice.selectors;
 
 export const defineUserDataFromStorage = (): UserDataState => {
   const userData = getStorageItem(STORAGE_KEYS.USER_DATA);

@@ -6,14 +6,16 @@ export type AuthFormData = {
 export type AuthResponse = {
   data: {
     id: number;
-    fullName: string;
+    userName: null,
+    userSurname: null,
     email: string;
   };
   token: string;
 };
 
 export type RegFormData = {
-  fullName: string;
+  userName: string;
+  // userSurname: string;
   email: string;
   password: string;
 };

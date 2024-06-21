@@ -1,22 +1,21 @@
 import { ProductList } from 'features/Products/ProductsList';
 import { Container } from 'features/page-wrapper/container';
-import { useFetch } from 'hooks/useFetch';
-import Loader from 'shared/components/loader';
-import { Product } from 'shared/types/product';
-import s from './main.module.css';
+import { useParsCategory } from 'hooks/useParsCategory';
+import { CategoryButton } from 'pages/MainPage/categoryButton';
 import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTES } from 'router/routes';
 import { useGetProductListQuery } from 'services/products';
-
+import Loader from 'shared/components/loader';
+import { categoryArr } from 'shared/features/FilterData/filter';
+import s from './main.module.css';
 
 export const MainPage = () => {
   const [category, setCategory] = useState('all');
 
-  const { data, isLoading} = useGetProductListQuery(category);
-
+  const { data, isLoading } = useGetProductListQuery(category);
   return (
-    <main>
+    <>
       <div className={s.banner}>
         <Container>
           <div className={s.bannerContainer}>
@@ -36,25 +35,30 @@ export const MainPage = () => {
       <div className={s.category}>
         <Container>
           <div className={s.categoryContainer}>
-            <button type='button' onClick={() => {setCategory('all')}} className={category === 'all' ? 'active' : ''}>Вся доска</button>
-            <button type='button' onClick={() => {setCategory('clothes')}} className={category === 'clothes' ? 'active' : ''}>Одежда</button>
+            <CategoryButton
+              categories={categoryArr}
+              stateCategory={category}
+              setStateCategory={setCategory}
+              pars={useParsCategory}
+            />
           </div>
         </Container>
       </div>
 
-      <div>
+      <div className={s.contentWrapper}>
         <Container>
+          <div className={s.content}>
             {isLoading && <Loader />}
-            
+
+            <h2>Вся лента</h2>
+
             {!!data?.items && !isLoading && <ProductList product={data.items} />}
 
-            <Link to={`${ROUTES.CATALOG}?category=${category}`}>
-          Загрузить еще
-        </Link>
+
+            <Link to={`${ROUTES.CATALOG}?category=${category}`}>Загрузить еще</Link>
+          </div>
         </Container>
       </div>
-        
-
-    </main>
+    </>
   );
 };

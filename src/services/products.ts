@@ -3,7 +3,6 @@ import { Product } from '../shared/types/product';
 import { RootState } from '../store';
 import { CreateProductForm } from 'features/CreateArticle/model/schemes/createArticles';
 
-
 type ProductList = Product[];
 
 type ResponseList<Data> = {
@@ -30,22 +29,22 @@ export const productsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Product'],
+  tagTypes: ['Product', 'Categories'],
   endpoints: builder => ({
-    getProduct: builder.query<ProductList, string>({
-      query: (id) => `products?_relations=users&id=${id}`,
+    getProduct: builder.query<Product[], string>({
+      query: (id) => `products?id=${id}`,
       providesTags: ['Product'],
     }),
     getProductList: builder.query<ResponseList<Product>, string>({
-      query: (category) => `products?${category !== 'all' ? `category=${category}&` : ''}limit=12`,
+      query: (category) => `products?${category !== 'all' ? `category=${category}&` : ''}limit=9&status=true`,
       providesTags: ['Product'],
     }),
     getProductPagination: builder.query<ResponseList<Product>, any>({
-      query: ({category, filtr, seach, page}) => `products?${category !== 'all' ? `category=${category}&` : ''}${filtr !== '' ? `sortBy=${filtr}&` : ''}${seach !== '' ? `title=*${seach}*&` : ''}page=${page}&limit=2`,
+      query: ({category, filtr, seach, page}) => `products?${category !== 'all' ? `category=${category}&` : ''}${filtr !== '' ? `sortBy=${filtr}&` : ''}${seach !== '' ? `title=*${seach}*&` : ''}page=${page}&limit=12&status=true`,
       providesTags: ['Product'],
     }),
-    getProductProfile: builder.query<ProductList, number>({
-      query: (userId) => `products?user_id=${userId}`,
+    getProductProfile: builder.query<ResponseList<Product>, any>({
+      query: ({userId, page, limit, sortDate, seach, filter}) => `products?user_id=${userId}&page=${page}&limit=${limit}&sortBy=${sortDate ? `-publication_date` : `publication_date`}${seach !== '' ? `&title=*${seach}*` : ''}${filter !== 'all' ? `&category=${filter}` : ''}`,
       providesTags: ['Product'],
     }),
 
@@ -76,7 +75,7 @@ export const productsApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['Product'],
-    })
+    }),
   }),
 });
 

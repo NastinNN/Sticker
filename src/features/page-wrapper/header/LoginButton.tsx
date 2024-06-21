@@ -1,46 +1,46 @@
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useOnClickOutside } from 'usehooks-ts';
+import { LoginIcon } from '../../../assets/icons/loginIcon';
 import { ROUTES } from '../../../router/routes';
-import { useAppDispatch } from '../../../store';
-import { clearUserData, getToken, getUserName } from '../../../store/userData';
-import { STORAGE_KEYS, clearStorageItem } from '../../../utils/storage';
+import { Menu } from '../../../shared/features/Menu';
+import { getToken, getUserName, getUserSurname } from '../../../store/userData';
 import s from './header.module.css';
-import { LoginIcon } from '../icons/loginIcon';
 
 export const LoginButton = () => {
-  const dispatch = useAppDispatch();
   const token = useSelector(getToken);
   const userName = useSelector(getUserName);
-  // const avatar = useSelector(getUserAvatar);
+  const userSurname = useSelector(getUserSurname);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const logoutHandler = () => {
-    dispatch(clearUserData());
-    clearStorageItem(STORAGE_KEYS.USER_DATA);
+  const ref = useRef(null);
+  const handleClickOutside = () => {
+    setShowMenu(false);
+  };
+  const handleClickInside = () => {
+    setShowMenu(!showMenu);
   };
 
-  if (token)
-    return (
-      <>
-      <div className={s.loginButton}>
-        <LoginIcon />
-      <div>Профиль</div>
-      </div>
-      
-        <ul>
-          <li>{userName}</li>
-          <li><Link to={`${ROUTES.PROFILE}`}>Мои объявления</Link></li>
-          <li className={s.newPostButton} onClick={logoutHandler}>Выйти</li>
-        </ul>
-        {/* <button className={s.newPostButton} onClick={logoutHandler}>
-          Выйти
-        </button> */}
-      </>
-    );
+  useOnClickOutside(ref, handleClickOutside);
 
   return (
-    <Link to={ROUTES.AUTH} className={s.loginButton}>
-      <LoginIcon />
-      <div>Войти</div>
-    </Link>
+    <>
+      {token ? (
+        <div className={s.dropdownMenu}>
+          <div className={s.loginButton} onClick={window.location.pathname !== ROUTES.PROFILE ?
+            handleClickInside : undefined} ref={ref}>
+            <LoginIcon />
+            <div>Профиль</div>
+          </div>
+          {window.location.pathname !== ROUTES.PROFILE && <Menu showMenu={showMenu} userName={userName!} userSurname={userSurname!} />}
+        </div>
+      ) : (
+        <Link to={ROUTES.AUTH} className={s.loginButton}>
+          <LoginIcon />
+          <div>Войти</div>
+        </Link>
+      )}
+    </>
   );
 };

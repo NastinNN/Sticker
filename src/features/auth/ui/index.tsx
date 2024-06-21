@@ -17,7 +17,7 @@ export const LoginForm = () => {
   // const userId = useSelector(getUserId);
 
   const [formState, setFormState] = useState<AuthFormData>({ email: '', password: '' });
-  const [formState1, setFormState1] = useState<RegFormData>({fullName: '', email: '', password: '' });
+  const [formState1, setFormState1] = useState<RegFormData>({userName: '', email: '', password: '' });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -94,7 +94,7 @@ export const LoginForm = () => {
             type="text"
             id="fullName"
             name="fullName"
-            value={formState1.fullName}
+            value={formState1.userName}
             onChange={onChange1}
             required
             autoComplete="off"

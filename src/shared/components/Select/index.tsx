@@ -17,7 +17,7 @@ const Select = ({ label, options, value, onChange }: CustomSelectProps) => (
     {label && <label className={s.selectLabel}>{label}</label>}
     <select className={s.select} value={value} onChange={onChange}>
       {options.map(option => (
-        <option key={option.value} value={option.value}>
+        <option className={s.option} key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}

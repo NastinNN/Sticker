@@ -1,0 +1,102 @@
+.filterRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.table {
+  width: 865px;
+  border-spacing: 0 8px;
+}
+
+.table th {
+  font-size: 12px;
+  opacity: 60%;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 0 12px 24px;
+  background-color: #ffffff;
+
+  transition: all ease 0.3s;
+}
+
+.table td {
+  padding: 28px 14px 28px 24px;
+  background-color: #ffffff;
+  margin-bottom: 8px;
+  color: var(--color-black) !important;
+}
+
+.titleActive {
+  cursor: pointer;
+}
+
+.titleActive:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.paginationButtom {
+  border: none; 
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.paginationButtom:disabled {
+  opacity: 60%;
+  cursor: default;
+}
+
+.seach {
+  display: flex;
+  align-items: center;
+}
+
+.filterSelect {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+}
+
+.input {
+  width: 420px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border: none;
+  background-color: #ffffff;
+  border: 1px solid rgb(42, 47, 55, 0.1);
+  border-radius: 4px;
+}
+
+.input::placeholder {
+  opacity: 0.6;
+}
+
+.input:focus {
+  outline: 0;
+  border-color: var(--color-blue);
+}
+
+.buttonImputClean {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 4px;
+  opacity: 0.4;
+  cursor: pointer;
+
+  transition: all ease 0.3s;
+}
+
+.buttonImputClean:hover {
+  opacity: 1;
+}
+

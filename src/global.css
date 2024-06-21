@@ -1,3 +1,13 @@
+:root {
+  --color-blue: #3A95FF;
+  --color-yellow: #FFAC28;
+  --color-dark-black: #1D1D1D;
+  --color-black: #2A2F37;
+  --color-gray: #424242;
+
+  --pd40: 40px 0;
+}
+
 body {
   position: relative;
   height: 100%;
@@ -5,6 +15,8 @@ body {
   font-family: "Jost";
   font-weight: 400;
   font-size: 14px;
+
+  color: #1D1D1D;
 }
 
 
@@ -18,4 +30,6 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--color-black)
 }
+

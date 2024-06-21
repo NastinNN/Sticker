@@ -5,7 +5,7 @@ import { ROUTES } from './routes';
 import { ProductPage } from 'pages/ProductPage';
 import { CatalogPage } from 'pages/CatalogPage';
 import { AuthPage } from 'pages/AuthPage';
-import { ProfilePage } from 'pages/ProfilePage';
+import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
 import { CreatePage } from 'pages/CreatePage';
 import { ErrorPage } from 'pages/ErrorPage';
 import { EditPage } from 'pages/EditPage';

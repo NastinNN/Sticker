@@ -7,8 +7,10 @@ export type Product = {
   views: number;
   description: string;
   price:number;
+  status: boolean;
   user: {
-    fullName: string;
+    name: string;
+    surname: string;
     email: string;
     phone: string;
     id: number;

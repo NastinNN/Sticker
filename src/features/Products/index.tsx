@@ -1,7 +1,6 @@
-import { format, parseISO } from 'date-fns';
-import { ru } from 'date-fns/locale';
 import type { Product } from '../../shared/types/product';
 import s from './product.module.css';
+import { useParsDate } from 'hooks/useParsDate';
 
 type ProductProps = {
   product: Product;
@@ -21,7 +20,7 @@ const Product = ({ product }: ProductProps) => {
 
       <div className={s.footer}>
         <div>{product.views}</div>
-        <span>{format(parseISO(String(product.publication_date)), "d MMMM yyyy", {locale: ru})}</span>
+        <span>{useParsDate(product.publication_date)}</span>
       </div>
     </div>
   </div>

@@ -1,0 +1,67 @@
+.name {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu svg {
+  opacity: 0.4;
+  transition: all ease 0.3s;
+}
+
+.menu:hover svg {
+  opacity: 100%;
+}
+
+
+.dropMenu {
+  display: flex;
+  flex-direction: column;
+  width: 242px;
+  background-color: #ffffff;
+  border: 1px solid rgb(44,45,46, 0.08);
+  position: absolute;
+  top: 70%;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: 0.3s;
+
+  z-index: 100;
+}
+
+.dropMenuActive {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropMenuItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 8px 24px;
+  border: 1px solid transparent;
+
+  transition: all ease 0.3s;
+}
+
+.dropMenuItem svg path {
+  opacity: 0.4;
+  transition: all ease 0.3s;
+}
+
+
+.dropMenuItem:hover,
+.dropMenuItem:hover svg path{
+  box-sizing: border-box;
+  background-color: rgb(44,45,46, 0.04);
+  border: 1px solid rgb(44,45,46, 0.08);
+  opacity: 100%;
+}
