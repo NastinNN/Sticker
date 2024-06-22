@@ -1,0 +1,138 @@
+.wrapper {
+  padding: var(--pd40);
+  color: var(--color-black);
+  font-size: 16px;
+}
+
+.buttonBack {
+  opacity: 0.6;
+  transition: all ease 0.3s;
+}
+
+.buttonBack:hover {
+  opacity: 1;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 40px;
+
+  padding-top: 32px;
+}
+
+.contentMain {
+  grid-column: 1 / 9;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.date {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: rgb(42,47,55, 0.06);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+
+}
+
+.id {
+  font-size: 18px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.views {
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.image {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textTitle {
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.text {
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.sidebar {
+  grid-column: -1 / -5;
+  padding-left: 50px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+.phone {
+  position: relative;
+  padding: 8px 0;
+}
+
+.phoneNumber {
+  visibility: hidden;
+  font-weight: 500;
+  color: var(--color-blue);
+  cursor: pointer;
+}
+
+.phoneNumberActive {
+  visibility: visible;
+}
+  
+.hiddenPhone {
+  visibility: visible;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background-color: var(--color-blue);
+  opacity: 1;
+
+  transition: all ease 0.3s;
+}
+
+
+.hiddenPhone:hover {
+  background-color: var(--color-blue-hover);
+}
+
+.hiddenPhoneNotActive {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.recommendations {
+  padding-top: 67px;
+}

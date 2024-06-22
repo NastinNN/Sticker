@@ -7,6 +7,7 @@ export type Product = {
   views: number;
   description: string;
   price:number;
+  phone: string;
   status: boolean;
   user: {
     name: string;

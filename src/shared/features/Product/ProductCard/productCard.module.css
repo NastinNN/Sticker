@@ -7,7 +7,7 @@
   transition: all ease 0.3s;
 }
 
-.productCard:hover .title {
+.wrapper:hover .title {
   color: var(--color-blue);
 }
 

@@ -1,14 +1,15 @@
+import { AuthPage } from 'pages/AuthPage';
+import { CatalogPage } from 'pages/CatalogPage/CatalogPage';
+import { CreatePage } from 'pages/CreatePage';
+import { EditPage } from 'pages/EditPage';
+import { ErrorPage } from 'pages/ErrorPage';
+import { ProductPage } from 'pages/ProductPage/ProductPage';
+import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import { Root } from '../features/core/Root';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { ROUTES } from './routes';
-import { ProductPage } from 'pages/ProductPage';
-import { CatalogPage } from 'pages/CatalogPage/CatalogPage';
-import { AuthPage } from 'pages/AuthPage';
-import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
-import { CreatePage } from 'pages/CreatePage';
-import { ErrorPage } from 'pages/ErrorPage';
-import { EditPage } from 'pages/EditPage';
+
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
       {
         path: `${ROUTES.ERROR}`,
         element: <ErrorPage />,
-      }
+      },
     ],
   },
 ]);

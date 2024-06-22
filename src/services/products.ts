@@ -3,8 +3,6 @@ import { Product } from '../shared/types/product';
 import { RootState } from '../store';
 import { CreateProductForm } from 'features/CreateArticle/model/schemes/createArticles';
 
-type ProductList = Product[];
-
 type ResponseList<Data> = {
   meta: {
     total_items: number;
@@ -29,23 +27,31 @@ export const productsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Product', 'Categories'],
+  tagTypes: ['Product', 'RecProduct'],
   endpoints: builder => ({
-    getProduct: builder.query<Product[], string>({
-      query: (id) => `products?id=${id}`,
+    getProduct: builder.query<Product, string>({
+      query: (id) => `products/${id}`,
       providesTags: ['Product'],
     }),
+
     getProductList: builder.query<ResponseList<Product>, string>({
-      query: (category) => `products?${category !== 'all' ? `category=${category}&` : ''}limit=9&status=true`,
+      query: (category) => `products?${category !== 'all' ? `category=${category}&` : ''}limit=9&status=true&sortBy=-publication_date`,
       providesTags: ['Product'],
     }),
+
     getProductPagination: builder.query<ResponseList<Product>, any>({
       query: ({category, filter, seach, page, limit}) => `products?${category !== 'all' ? `category=${category}&` : ''}${filter !== '' ? `sortBy=${filter}&` : ''}${seach !== '' ? `title=*${seach}*&` : ''}page=${page}&limit=${limit}&status=true`,
       providesTags: ['Product'],
     }),
+
     getProductProfile: builder.query<ResponseList<Product>, any>({
       query: ({userId, page, limit, sortDate, seach, filter}) => `products?user_id=${userId}&page=${page}&limit=${limit}&sortBy=${sortDate ? `-publication_date` : `publication_date`}${seach !== '' ? `&title=*${seach}*` : ''}${filter !== 'all' ? `&category=${filter}` : ''}`,
       providesTags: ['Product'],
+    }),
+
+    getRecProduct: builder.query<ResponseList<Product>, string>({
+      query: (category) => `products?category=${category}&limit=3&status=true&sortBy=-publication_date`,
+      providesTags: ['RecProduct'],
     }),
 
     createProduct: builder.mutation<unknown, CreateProductForm & { user_id: number }>({
@@ -59,6 +65,7 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['Product'],
     }),
+
     updateProduct: builder.mutation<Product, CreateProductForm & { id: number }>({
       query: (args) => ({
         url: `/products/${args.id}`,
@@ -69,6 +76,7 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['Product'],
     }),
+
     deleteProduct: builder.mutation<{id: number }, number>({
       query: (id) => ({
         url: `/products/${id}`,
@@ -79,4 +87,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } = productsApi;
+export const { useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useGetRecProductQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } = productsApi;

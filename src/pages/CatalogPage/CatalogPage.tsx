@@ -15,7 +15,7 @@ export const CatalogPage = () => {
   const [params, setParams] = useSearchParams();
 
   const category = String(params.get('category') || 'all');
-  const filter = String(params.get('sortBy') || 'publication_date');
+  const filter = String(params.get('sortBy') || '-publication_date');
   const seachParam = String(params.get('title') || '');
 
   const page = Number(params.get('page') || 1);
