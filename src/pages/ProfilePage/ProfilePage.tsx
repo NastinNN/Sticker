@@ -1,18 +1,16 @@
-import classes from 'classnames';
+import { ProfileTable } from 'features/Profile/ProfileTable';
 import { Container } from 'features/page-wrapper/container';
 import { useSelector } from 'react-redux';
 import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { ROUTES } from 'router/routes';
 import { Menu } from 'shared/features/Menu';
-import { ProfileTable } from 'shared/features/Profile/ProfileTable';
 import { getUserId, getUserName, getUserSurname } from 'store/userData';
 
 import { PlusIcon } from 'assets/icons/plusIcon';
 import { useState } from 'react';
 import { useGetProductProfileQuery } from 'services/products';
-import s from './profile.module.css';
 import Loader from 'shared/components/loader';
-
+import s from './profile.module.css';
 
 export const ProfilePage = () => {
   const userId = Number(useSelector(getUserId));
@@ -34,25 +32,25 @@ export const ProfilePage = () => {
   return (
     <main>
       <Container>
-      {isLoading && <Loader />}
+        {isLoading && <Loader />}
         <div className={s.wrapper}>
           <div className={s.sidebar}>
             <Menu showMenu={true} userName={userName!} userSurname={userSurname!} />
           </div>
-            <div className={s.content}>
-              <div className={s.contentHeader}>
-                <div className={s.contentHeaderTitle}>
-                  <h2>Объявления</h2>
-                   <div>Всего: {data?.meta.total_items}</div>
-                </div>
-                <Link to={`${ROUTES.CREATE}`}>
-                  <div className={s.addButton}>
-                    Добавить <PlusIcon />
-                  </div>
-                </Link>
+          <div className={s.content}>
+            <div className={s.contentHeader}>
+              <div className={s.contentHeaderTitle}>
+                <h2>Объявления</h2>
+                <div>Всего: {data?.meta.total_items}</div>
               </div>
-              
-              {data?.items &&
+              <Link to={`${ROUTES.CREATE}`}>
+                <div className={s.addButton}>
+                  Добавить <PlusIcon />
+                </div>
+              </Link>
+            </div>
+
+            {data?.items && (
               <ProfileTable
                 data={data}
                 page={page}
@@ -65,9 +63,9 @@ export const ProfilePage = () => {
                 setSeach={setSeach}
                 filter={filter}
                 setFilter={setFilter}
-              />}
-              
-            </div> 
+              />
+            )}
+          </div>
         </div>
       </Container>
     </main>

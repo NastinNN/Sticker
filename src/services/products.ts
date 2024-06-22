@@ -40,7 +40,7 @@ export const productsApi = createApi({
       providesTags: ['Product'],
     }),
     getProductPagination: builder.query<ResponseList<Product>, any>({
-      query: ({category, filtr, seach, page, limit}) => `products?${category !== 'all' ? `category=${category}&` : ''}${filtr !== '' ? `sortBy=${filtr}&` : ''}${seach !== '' ? `title=*${seach}*&` : ''}page=${page}&limit=${limit}&status=true`,
+      query: ({category, filter, seach, page, limit}) => `products?${category !== 'all' ? `category=${category}&` : ''}${filter !== '' ? `sortBy=${filter}&` : ''}${seach !== '' ? `title=*${seach}*&` : ''}page=${page}&limit=${limit}&status=true`,
       providesTags: ['Product'],
     }),
     getProductProfile: builder.query<ResponseList<Product>, any>({

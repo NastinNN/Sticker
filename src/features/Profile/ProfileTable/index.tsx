@@ -1,10 +1,10 @@
 import { FilterPointerIcon } from 'assets/icons/filterPointer';
 import { useRef } from 'react';
-import Select from 'shared/components/Select';
-import { ProfileProductList } from '../ProfileProductList';
-import { Pagination } from 'shared/features/Pagination';
-import { categoriesSelect } from '../../FilterData/filter';
 import { ButtonClean } from 'shared/components/Buttons/ButtonClean';
+import Select from 'shared/components/Select';
+import { Pagination } from 'shared/features/Pagination';
+import { categoriesSelect } from '../../../shared/features/FilterData/filter';
+import { ProfileProductList } from '../ProfileProductList';
 
 import s from './profileTable.module.css';
 
