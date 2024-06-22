@@ -7,9 +7,9 @@ import s from './footer.module.css';
 
 export const Footer = () => {
   return (
-    <footer className={s.footer}>
+    <footer className={s.wrapper}>
       <Container>
-        <div className={s.footerContainer}>
+        <div className={s.container}>
           <div className={s.leftSection}>
             <Link to={ROUTES.ROOT} className={s.logo}>
               <Logo />

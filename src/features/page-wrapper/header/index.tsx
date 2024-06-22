@@ -12,9 +12,9 @@ export const Header = () => {
   const inputRef = useRef<HTMLInputElement>(null!);
 
   return (
-    <header className={s.header}>
+    <header className={s.wrapper}>
       <Container>
-        <div className={s.headerContainer}>
+        <div className={s.container}>
           <div className={s.leftSection}>
             <Link to={ROUTES.ROOT} className={s.logo}>
               <Logo />

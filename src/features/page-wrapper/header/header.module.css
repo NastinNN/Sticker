@@ -1,8 +1,8 @@
-.header {
+.wrapper {
   background-color: #FFFFFF;
 }
 
-.headerContainer {
+.container {
   height: 72px;
   display: flex;
   justify-content: space-between;
@@ -62,7 +62,7 @@
 }
 
 .searchButton:hover {
-  background-color: #166dd0;
+  background-color: var(--color-blue-hover);
 }
 
 .searchInput {
@@ -93,7 +93,7 @@
 }
 
 .buttonCreateAd:hover {
-  background-color: #fd9c00;
+  background-color: var(--color-yellow-hover);
 }
 
 .loginButton {

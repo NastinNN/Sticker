@@ -56,7 +56,6 @@ export const ProfilePage = () => {
               <ProfileTable
                 data={data}
                 page={page}
-                totalItems={data.meta.total_items}
                 limit={limit}
                 isLoading={isLoading}
                 isFetching={isFetching}

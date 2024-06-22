@@ -59,7 +59,7 @@
 }
 
 .addButton:hover {
-  background-color: #166dd0;
+  background-color: var(--color-blue-hover);
 }
 
 

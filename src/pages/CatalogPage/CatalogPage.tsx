@@ -1,4 +1,4 @@
-import { ProductList } from 'features/Products/ProductsList';
+import { ProductList } from '../../shared/features/Product/ProductList/ProductsList';
 import { Container } from 'features/page-wrapper/container';
 import { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -6,25 +6,24 @@ import { useGetProductPaginationQuery } from 'services/products';
 import Select from 'shared/components/Select';
 import Loader from 'shared/components/loader';
 import { categoriesSelect, filterSelect } from 'shared/features/FilterData/filter';
+import { Pagination } from 'shared/features/Pagination';
 
 export const CatalogPage = () => {
   const [params, setParams] = useSearchParams();
 
   const category = String(params.get('category') || 'all');
-  const filtr = String(params.get('sortBy') || 'publication_date');
+  const filter = String(params.get('sortBy') || 'publication_date');
   const seachParam = String(params.get('title') || '');
 
   const page = Number(params.get('page') || 1);
-  const setPage = (page: number) => {
-    params.set('page', String(page));
-    setParams(params);
-  };
+
+  const limit = 9;
 
   const inputRef = useRef<HTMLInputElement>(null!);
   const [seach, setSeach] = useState(seachParam);
   const [seachParams, setSeachParams] = useState(seachParam);
 
-  const { data, isLoading, isFetching } = useGetProductPaginationQuery({ category, filtr, seach, page });
+  const { data, isLoading, isFetching } = useGetProductPaginationQuery({ category, filter, seach, page, limit });
 
   return (
     <div>
@@ -61,7 +60,7 @@ export const CatalogPage = () => {
         />
 
         <Select
-          value={filtr}
+          value={filter}
           onChange={e => {
             params.set('sortBy', e.target.value);
             setParams(params);
@@ -69,27 +68,12 @@ export const CatalogPage = () => {
           options={filterSelect}
         />
 
+        <Pagination limit={limit} data={data} page={page} isFetching={isFetching} />
+
         {isLoading && <Loader />}
         {!data?.items.length && <div>Объявление не найдено</div>}
 
         {!!data?.items && !isLoading && <ProductList product={data.items} />}
-
-        {!!data?.meta.total_pages && data.meta.total_pages > 1 && (
-          <div>
-            <button
-              onClick={() => {
-                setPage(page - 1);
-              }}
-              disabled={isFetching || page === 1}
-            >
-              Назад
-            </button>
-
-            <button onClick={() => setPage(page + 1)} disabled={isFetching || data?.meta.total_pages === page}>
-              Далее
-            </button>
-          </div>
-        )}
       </Container>
     </div>
   );

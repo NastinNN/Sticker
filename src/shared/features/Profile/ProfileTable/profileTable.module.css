@@ -4,12 +4,6 @@
   padding: 24px 0;
 }
 
-.pagination {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 .table {
   width: 865px;
   border-spacing: 0 8px;
@@ -42,17 +36,6 @@
   opacity: 1;
 }
 
-.paginationButtom {
-  border: none; 
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.paginationButtom:disabled {
-  opacity: 60%;
-  cursor: default;
-}
 
 .seach {
   display: flex;

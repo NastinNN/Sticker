@@ -1,6 +1,6 @@
 import classes from "classnames"
 
-import s from "./main.module.css"
+import s from "./category.module.css"
 
 type Category = {
   name: string
@@ -17,7 +17,7 @@ export const CategoryButton = ({categories, stateCategory, setStateCategory, par
   return (
     <>
     {categories.map((category, index) => (
-      <button type='button' key={index} onClick={() => {setStateCategory(category)}} className={stateCategory === category ? classes(s.buttonCategory, s.buttonCategoryActive) : s.buttonCategory}>{pars(category)}</button>
+      <button type='button' key={index} onClick={() => {setStateCategory(category)}} className={stateCategory === category ? classes(s.button, s.buttonActive) : s.button}>{pars(category)}</button>
     ))}
   </>
   )

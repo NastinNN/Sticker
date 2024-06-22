@@ -3,7 +3,7 @@ import { Root } from '../features/core/Root';
 import { MainPage } from '../pages/MainPage/MainPage';
 import { ROUTES } from './routes';
 import { ProductPage } from 'pages/ProductPage';
-import { CatalogPage } from 'pages/CatalogPage';
+import { CatalogPage } from 'pages/CatalogPage/CatalogPage';
 import { AuthPage } from 'pages/AuthPage';
 import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
 import { CreatePage } from 'pages/CreatePage';

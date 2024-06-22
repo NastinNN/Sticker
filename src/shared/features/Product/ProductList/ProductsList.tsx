@@ -10,7 +10,7 @@ type ProductListProps = {
 export const ProductList = ({ product }: ProductListProps) => {
 
   return (
-    <div className={s.cardList}>
+    <div className={s.wrapper}>
       {product.map((product, index) => (
         <ProductCard productCard={product} key={index} />
       ))}

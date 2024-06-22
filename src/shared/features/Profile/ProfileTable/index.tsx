@@ -1,18 +1,16 @@
-import { ArrowBackIcon, ArrowNextIcon } from 'assets/icons/arrowIcon';
 import { FilterPointerIcon } from 'assets/icons/filterPointer';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useRef } from 'react';
 import Select from 'shared/components/Select';
 import { ProfileProductList } from '../ProfileProductList';
 
+import { CloseIcon } from 'assets/icons/closeIcon';
+import { Pagination } from 'shared/features/Pagination';
 import { categoriesSelect } from '../../FilterData/filter';
 import s from './profileTable.module.css';
-import { CloseIcon } from 'assets/icons/closeIcon';
 
 type ProfileTableProps = {
   page: number;
   limit: number;
-  totalItems: number;
   sortDate: boolean;
   setSortDate: any;
   data: any;
@@ -28,40 +26,15 @@ export const ProfileTable = ({
   data,
   page,
   limit,
-  isLoading,
   isFetching,
   sortDate,
   setSortDate,
   seach,
   setSeach,
-  totalItems,
   filter,
   setFilter,
 }: ProfileTableProps) => {
   const inputRef = useRef<HTMLInputElement>(null!);
-
-  const [minItem, setMinItem] = useState(1);
-  const [maxItem, setMaxItem] = useState(limit);
-
-  const [params, setParams] = useSearchParams();
-  const setPage = useCallback(
-    (page: number) => {
-      params.set('page', String(page));
-      setParams(params);
-    },
-    [params, setParams],
-  );
-
-  useEffect(() => {
-    if (totalItems < limit) {
-      setMaxItem(totalItems);
-      setPage(1);
-    }
-    if (totalItems > limit && page === 1) setMaxItem(limit);
-
-    if (totalItems === 0) setMinItem(0);
-    if (totalItems > 0 && page === 1) setMinItem(1);
-  }, [limit, page, setPage, totalItems]);
 
   if (data)
     return (
@@ -74,10 +47,17 @@ export const ProfileTable = ({
               type="text"
               value={seach}
               onChange={e => setSeach(e.target.value)}
-              placeholder='Найти объявление'
+              placeholder="Найти объявление"
               className={s.input}
             />
-            <div className={s.buttonImputClean} onClick={() => {setSeach('')}}><CloseIcon /></div>
+            <div
+              className={s.buttonImputClean}
+              onClick={() => {
+                setSeach('');
+              }}
+            >
+              <CloseIcon />
+            </div>
           </div>
 
           <div className={s.filterSelect}>
@@ -91,35 +71,7 @@ export const ProfileTable = ({
             />
           </div>
 
-          <div className={s.pagination}>
-            <div>{}</div>
-            <div className={s.paginationItem}>
-              {minItem}—{maxItem} из {data?.meta.total_items}
-            </div>
-            <button
-              className={s.paginationButtom}
-              onClick={() => {
-                setPage(page - 1);
-                setMinItem(minItem - limit);
-                setMaxItem(maxItem === data.meta.total_items ? maxItem - 1 - (maxItem - minItem) : maxItem - 8);
-              }}
-              disabled={isFetching || minItem === 1 || minItem === 0}
-            >
-              <ArrowBackIcon />
-            </button>
-
-            <button
-              className={s.paginationButtom}
-              onClick={() => {
-                setPage(page + 1);
-                setMinItem(minItem + limit);
-                setMaxItem(maxItem + 8 > data.meta.total_items ? data.meta.total_items : maxItem + 8);
-              }}
-              disabled={isFetching || maxItem === totalItems || page === data?.meta.total_pages}
-            >
-              <ArrowNextIcon />
-            </button>
-          </div>
+          <Pagination limit={limit} data={data} page={page} isFetching={isFetching} />
         </div>
 
         <table className={s.table}>

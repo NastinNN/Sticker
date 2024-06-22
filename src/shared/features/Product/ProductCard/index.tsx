@@ -2,9 +2,10 @@ import { useParsDate } from 'hooks/useParsDate';
 import { Link } from 'react-router-dom';
 import { Product } from 'shared/types/product';
 import { ROUTES } from '../../../../router/routes';
-import s from './productCard.module.css';
 import { useParsCategory } from 'hooks/useParsCategory';
 import { EyeIcon } from 'assets/icons/eyeIcon';
+
+import s from './productCard.module.css';
 
 type ProductCardProps = {
   productCard: Product;
@@ -12,7 +13,7 @@ type ProductCardProps = {
 
 export const ProductCard = ({ productCard }: ProductCardProps) => {
   return (
-    <Link to={`${ROUTES.PRODUCT}/${productCard.id}`} className={s.productCard}>
+    <Link to={`${ROUTES.PRODUCT}/${productCard.id}`} className={s.wrapper}>
       <div className={s.coverImage}>
             <img src={productCard.image} alt="cover" />
             <div className={s.mark}>{useParsCategory(productCard.category)}</div>
