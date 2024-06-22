@@ -2,10 +2,10 @@ import { FilterPointerIcon } from 'assets/icons/filterPointer';
 import { useRef } from 'react';
 import Select from 'shared/components/Select';
 import { ProfileProductList } from '../ProfileProductList';
-
-import { CloseIcon } from 'assets/icons/closeIcon';
 import { Pagination } from 'shared/features/Pagination';
 import { categoriesSelect } from '../../FilterData/filter';
+import { ButtonClean } from 'shared/components/Buttons/ButtonClean';
+
 import s from './profileTable.module.css';
 
 type ProfileTableProps = {
@@ -50,14 +50,7 @@ export const ProfileTable = ({
               placeholder="Найти объявление"
               className={s.input}
             />
-            <div
-              className={s.buttonImputClean}
-              onClick={() => {
-                setSeach('');
-              }}
-            >
-              <CloseIcon />
-            </div>
+            <ButtonClean state={seach} setState={setSeach} />
           </div>
 
           <div className={s.filterSelect}>

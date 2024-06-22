@@ -68,18 +68,6 @@
   border-color: var(--color-blue);
 }
 
-.buttonImputClean {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 4px;
-  opacity: 0.4;
-  cursor: pointer;
 
-  transition: all ease 0.3s;
-}
 
-.buttonImputClean:hover {
-  opacity: 1;
-}
 

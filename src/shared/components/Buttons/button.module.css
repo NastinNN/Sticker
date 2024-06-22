@@ -1,0 +1,21 @@
+.clean {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 4px;
+  opacity: 0.5;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: all ease 0.3s;
+}
+
+.clean:hover {
+  opacity: 1;
+}
+
+.clean:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
