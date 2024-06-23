@@ -17,7 +17,7 @@ export const LoginForm = () => {
   // const userId = useSelector(getUserId);
 
   const [formState, setFormState] = useState<AuthFormData>({ email: '', password: '' });
-  const [formState1, setFormState1] = useState<RegFormData>({userName: '', email: '', password: '' });
+  const [formState1, setFormState1] = useState<RegFormData>({userName: '', userSurname: '', email: '', password: '' });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

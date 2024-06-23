@@ -4,9 +4,7 @@ import { STORAGE_KEYS, setStorageItem } from '../../utils/storage';
 import { AuthFormData, AuthResponse, RegFormData } from './types';
 
 export const postAuthData = createAsyncThunk('userData/postAuth', async (payload: AuthFormData) => {
-  const {
-    data: { data, token },
-  } = await post<AuthResponse>(`/auth`, payload);
+  const {data: { data, token }} = await post<AuthResponse>(`/auth`, payload);
 
   const userData = { ...data, token };
 

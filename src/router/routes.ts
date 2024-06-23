@@ -6,5 +6,6 @@ export enum ROUTES {
   CATALOG = "/catalog",
   PROFILE = "/profile",
   EDIT = "/edit",
+  RECOVERY = "/recovery",
   ERROR ="*"
 }

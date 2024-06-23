@@ -27,7 +27,7 @@ export const productsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Product', 'RecProduct'],
+  tagTypes: ['Product', 'RecProduct', 'User'],
   endpoints: builder => ({
     getProduct: builder.query<Product, string>({
       query: (id) => `products/${id}`,

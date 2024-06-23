@@ -10,7 +10,6 @@ import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
 
 import s from './product.module.css';
-import { nanoid } from '@reduxjs/toolkit';
 
 type ProductProps = {
   product: Product;
@@ -22,7 +21,6 @@ export const ProductView = ({ product }: ProductProps) => {
 
   const [location, setLocation] = useState<any>(null);
   const [center, setCenter] = useState<any>([51.660781, 39.200296]);
-
 
   return (
     <div className={s.wrapper}>

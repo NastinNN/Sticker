@@ -15,7 +15,7 @@ export type AuthResponse = {
 
 export type RegFormData = {
   userName: string;
-  // userSurname: string;
+  userSurname: string;
   email: string;
   password: string;
 };

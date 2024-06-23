@@ -4,11 +4,11 @@ import { STORAGE_KEYS, getStorageItem } from '../../utils/storage';
 import { postAuthData } from './effects';
 
 type User = {
-  userName: string | null;
-  userSurname: string | null;
-  email: string | null;
-  id: number | null;
-  token: string | null;
+    userName: string | null;
+    userSurname: string | null;
+    email: string | null;
+    id: number | null;
+    token: string | null;  
 };
 
 type UserDataState = {
@@ -19,11 +19,11 @@ type UserDataState = {
 
 const initialState: UserDataState = {
   userData: {
-    userName: null,
-    userSurname: null,
-    email: null,
-    id: null,
-    token: null,
+      userName: null,
+      userSurname: null,
+      email: null,
+      id: null,
+      token: null,   
   },
   isLoading: false,
   error: null,
