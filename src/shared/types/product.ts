@@ -8,6 +8,7 @@ export type Product = {
   description: string;
   price:number;
   phone: string;
+  location: string;
   status: boolean;
   user: {
     name: string;

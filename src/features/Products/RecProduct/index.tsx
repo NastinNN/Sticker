@@ -12,7 +12,6 @@ export const RecProduct = ({ category, id }: RecProductProps) => {
   const { data, isLoading } = useGetRecProductQuery(category);
 
   const recArr = data?.items.filter(e => e.id !== id).slice(0, 2);
-  console.log(recArr);
 
   if (data)
     return (

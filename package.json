@@ -44,6 +44,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
