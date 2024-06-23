@@ -10,6 +10,7 @@ import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
 
 import s from './product.module.css';
+import { nanoid } from '@reduxjs/toolkit';
 
 type ProductProps = {
   product: Product;
@@ -19,7 +20,6 @@ export const ProductView = ({ product }: ProductProps) => {
   const [showPhone, setShowPhone] = useState(false);
   const navigate = useNavigate();
 
-  const city = product.location;
   const [location, setLocation] = useState<any>(null);
   const [center, setCenter] = useState<any>([51.660781, 39.200296]);
 
@@ -33,7 +33,7 @@ export const ProductView = ({ product }: ProductProps) => {
         <div className={s.contentMain}>
           <div className={s.date}>{useParsDate(product.publication_date)}</div>
           <div className={s.title}>{product.title}</div>
-          <div className={s.id}>{product.id}</div>
+          <div className={s.id}>{product.articul}</div>
           <div className={s.views}>
             <EyeIcon />
             {product.views}
