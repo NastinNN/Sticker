@@ -8,11 +8,12 @@ import {
   InputAdornment,
   InputLabel,
   TextField,
+  Button
 } from '@mui/material';
 import { signInFormValidationScheme } from 'features/auth/model/schemes/signIn';
 import { useFormik } from 'formik';
 
-import Button from '@material-ui/core/Button';
+
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
@@ -21,7 +22,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'store';
 import { getIsLoading } from 'store/userData';
 import { postAuthData } from 'store/userData/effects';
-import { useStyles } from '../muiStyle';
+import { styles } from '../muiStyle';
 import { ROUTES } from 'router/routes';
 import { Link } from 'react-router-dom';
 
@@ -49,7 +50,7 @@ export const SignInForm = () => {
     },
   });
 
-  const styles = useStyles();
+  /*const styles = useStyles();*/
 
   return (
     <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -62,8 +63,7 @@ export const SignInForm = () => {
           gap: '16px',
         }}
       >
-        <TextField
-          className={styles.input}
+        <TextField sx={styles.input}
           fullWidth
           variant="filled"
           id="email"
@@ -75,7 +75,7 @@ export const SignInForm = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
         />
-        <FormControl fullWidth variant="filled" error={formik.touched.password && Boolean(formik.errors.password)} className={styles.input}>
+        <FormControl fullWidth variant="filled" error={formik.touched.password && Boolean(formik.errors.password)} sx={styles.input}>
           <InputLabel htmlFor="filled-adornment-password">Пароль</InputLabel>
           <FilledInput
             value={formik.values.password}
@@ -100,7 +100,7 @@ export const SignInForm = () => {
           />
           <FormHelperText
             id="filled-adornment-password"
-            error={formik.touched.password && Boolean(formik.errors.password)} className={styles.input}
+            error={formik.touched.password && Boolean(formik.errors.password)} sx={styles.input}
           >
             {formik.touched.password && formik.errors.password}
           </FormHelperText>
@@ -114,7 +114,7 @@ export const SignInForm = () => {
           </Grid>
         </FormControl>
 
-        <Button variant="contained" fullWidth className={styles.button} type="submit" disabled={isLoading}>
+        <Button variant="contained" fullWidth sx={styles.button} type="submit" disabled={isLoading}>
           Войти
         </Button>
       </Box>

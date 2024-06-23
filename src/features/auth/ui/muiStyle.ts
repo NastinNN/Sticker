@@ -1,7 +1,4 @@
-import { makeStyles } from '@material-ui/core';
-
-
-export const useStyles = makeStyles((theme) => ({
+export const styles = {
   input: {
     "& .MuiInputLabel-root": {
       fontFamily: "Jost",
@@ -63,4 +60,4 @@ export const useStyles = makeStyles((theme) => ({
       marginTop: "8px"
     }
   }
-}));
+};
