@@ -1,46 +1,16 @@
-import { useFormik } from 'formik';
-import s from './createArticleForm.module.css';
+import { Box, Button, Grid, MenuItem, TextField } from "@mui/material";
 
-import { Navigate, useNavigate } from 'react-router-dom';
-import { сreateProductFormValidationScheme } from '../model/schemes/createArticles';
+import { styles } from "./MuiFormProductStyle"
+import s from "./formaProduct.module.css"
+import { categoriesCreateSelect } from "../FilterData/filter";
 
+type FormProductProps = {
+  formik: any;
+  buttonText: string;
+  isLoading: boolean
+};
 
-import { Box, Button, FormControl, Grid, Input, InputLabel, MenuItem, TextField } from '@mui/material';
-import { forwardRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { categoriesCreateSelect } from 'shared/features/FilterData/filter';
-import { ROUTES } from '../../../router/routes';
-import { useCreateProductMutation } from '../../../services/products';
-import { getUserId } from '../../../store/userData';
-import { styles } from './muiStyle';
-import { nanoid } from '@reduxjs/toolkit';
-
-export const CreateProductForm = () => {
-  const navigate = useNavigate();
-  const userId = useSelector(getUserId);
-  const [createProduct, { isLoading, isSuccess }] = useCreateProductMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate(`${ROUTES.PROFILE}`);
-    }
-  }, [isSuccess, navigate]);
-
-  const articul = nanoid(12);
-
-  const formik = useFormik({
-    initialValues: сreateProductFormValidationScheme.getDefault(),
-    validationSchema: сreateProductFormValidationScheme,
-    validateOnChange: false,
-    validateOnBlur: false,
-    onSubmit: val => {
-      createProduct({ ...val, user_id: userId!, articul: articul });
-    },
-  });
-
-
-  if (!userId) return <Navigate to={ROUTES.AUTH} />;
-
+export const FormProduct = ({formik, buttonText, isLoading}: FormProductProps) => {
   return (
     <Box
       width={870}
@@ -117,7 +87,7 @@ export const CreateProductForm = () => {
                   variant="filled"
                   id="price"
                   name="price"
-                  type='number'
+                  type="number"
                   placeholder="Введите цену"
                   value={formik.values.price}
                   onChange={formik.handleChange}
@@ -130,29 +100,28 @@ export const CreateProductForm = () => {
           </Grid>
 
           <Grid container spacing={2}>
-          <Grid item xs={6}>
-          <Box width="100%" className={s.input}>
-            <label htmlFor="phone" className={s.label}>
-              Телефон
-            </label>
-            <TextField
-              sx={styles.createForm}
-              fullWidth
-              hiddenLabel
-              variant="filled"
-              id="phone"
-              name="phone"
-              placeholder="Введите номер телефона в формате +7 900 000 00 00"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.phone && Boolean(formik.errors.phone)}
-              helperText={formik.touched.phone && formik.errors.phone}
-            />
-          </Box>
+            <Grid item xs={6}>
+              <Box width="100%" className={s.input}>
+                <label htmlFor="phone" className={s.label}>
+                  Телефон
+                </label>
+                <TextField
+                  sx={styles.createForm}
+                  fullWidth
+                  hiddenLabel
+                  variant="filled"
+                  id="phone"
+                  name="phone"
+                  placeholder="Введите номер телефона в формате +7 900 000 00 00"
+                  value={formik.values.phone}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.phone && Boolean(formik.errors.phone)}
+                  helperText={formik.touched.phone && formik.errors.phone}
+                />
+              </Box>
+            </Grid>
           </Grid>
-          </Grid>
-
 
           <Box width="100%" className={s.input}>
             <label htmlFor="description" className={s.label}>
@@ -217,7 +186,7 @@ export const CreateProductForm = () => {
           </Box>
 
           <Button variant="contained" fullWidth sx={styles.button} type="submit" disabled={isLoading}>
-            {isLoading ? 'Опубликовать...' : 'Опубликовать'}
+            {isLoading ? `${buttonText}...` : `${buttonText}`}
           </Button>
         </Box>
       </Box>

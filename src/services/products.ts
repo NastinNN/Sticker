@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { CreateProductForm } from 'features/CreateProduct/model/schemes/createArticles';
 import { Product } from '../shared/types/product';
 import { RootState } from '../store';
-import { CreateProductForm } from 'features/CreateArticle/model/schemes/createArticles';
 
 type ResponseList<Data> = {
   meta: {
@@ -29,8 +29,14 @@ export const productsApi = createApi({
   }),
   tagTypes: ['Product', 'RecProduct', 'User'],
   endpoints: builder => ({
+
     getProduct: builder.query<Product, string>({
       query: (id) => `products/${id}`,
+      providesTags: ['Product'],
+    }),
+
+    getProductUserId: builder.query<Product, string>({
+      query: (id) => `products?id=${id}_select=user_id`,
       providesTags: ['Product'],
     }),
 
@@ -89,4 +95,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useGetRecProductQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } = productsApi;
+export const { useGetProductUserIdQuery, useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useGetRecProductQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } = productsApi;

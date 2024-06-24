@@ -1,8 +1,5 @@
-import { CreateProductForm } from "features/CreateArticle/ui"
-
+import { CreateProductForm } from 'features/CreateProduct/ui';
 
 export const CreatePage = () => {
-  return (
-    <CreateProductForm />
-  )
-}
+  return <CreateProductForm />;
+};
