@@ -6,8 +6,8 @@ export type AuthFormData = {
 export type AuthResponse = {
   data: {
     id: number;
-    userName: null,
-    userSurname: null,
+    userName: null;
+    userSurname: null;
     email: string;
   };
   token: string;

@@ -1,10 +1,5 @@
 import { object, string } from 'yup';
 
-export type SignInForm = {
-  email: string;
-  password: string;
-};
-
 
 export const signInFormValidationScheme = object().shape({
   email: string()

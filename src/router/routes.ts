@@ -7,5 +7,6 @@ export enum ROUTES {
   PROFILE = "/profile",
   EDIT = "/edit",
   RECOVERY = "/recovery",
+  AGREEMENT = "/user_agreement",
   ERROR ="*"
 }

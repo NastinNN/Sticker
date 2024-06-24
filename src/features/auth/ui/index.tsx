@@ -11,6 +11,7 @@ import { SignInForm } from './formSignIn';
 
 import s from './auth.module.css';
 import { styles } from './muiStyle';
+import { SignUpForm } from './formSignUp';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -75,7 +76,7 @@ export const AuthForm = () => {
         <SignInForm />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Регистрация
+        <SignUpForm />
       </CustomTabPanel>
     </Box>
   );

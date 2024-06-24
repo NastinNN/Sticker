@@ -9,7 +9,7 @@ export const styles = {
       opacity: "0.2"
     },
     "& .Mui-error": {
-      color: "red",
+      color: "#d32f2f",
     },
     "& .MuiFilledInput-root.Mui-error": {
       borderColor: "#d32f2f",
@@ -22,7 +22,6 @@ export const styles = {
       paddingTop: "20px",
     },
     "& .MuiInputBase-root": {
-      color: 'black',
       backgroundColor: 'rgb(42,47,55, 0.02)',
       fontFamily: "Jost",
       fontSize: "16px",
