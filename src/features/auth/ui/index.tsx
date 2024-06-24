@@ -1,130 +1,82 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { ROUTES } from '../../../router/routes';
-import { useAppDispatch } from '../../../store';
-import { getIsLoading, getToken, getUserId } from '../../../store/userData';
-import { postAuthData, postRegData } from '../../../store/userData/effects';
-import { AuthFormData, RegFormData } from '../../../store/userData/types';
-import styles from './loginForm.module.css';
-import { STORAGE_KEYS } from 'utils/storage';
+import { ROUTES } from 'router/routes';
+import { getToken } from 'store/userData';
 
-export const LoginForm = () => {
-  const dispatch = useAppDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const token = useSelector(getToken);
-  const [login, setLogin] = useState('signUp');
-  // const userId = useSelector(getUserId);
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { SignInForm } from './formSignIn';
 
-  const [formState, setFormState] = useState<AuthFormData>({ email: '', password: '' });
-  const [formState1, setFormState1] = useState<RegFormData>({userName: '', userSurname: '', email: '', password: '' });
+import s from './auth.module.css';
+import { styles } from './muiStyle';
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-    setFormState(prev => ({ ...prev, [name]: value }));
-  };
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
 
-  const onChange1 = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setFormState1(prev => ({ ...prev, [name]: value }));
-  };
-
-
-  const handeSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    dispatch(postAuthData(formState));
-  };
-
-  const handeSubmit1 = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    dispatch(postRegData(formState1));
-  };
-
-  if (token) return <Navigate to={ROUTES.ROOT} />;
-
-  if (login === 'signUp')
   return (
-    <div className={styles.loginContainer}>
-      <h2 onClick={() => {setLogin('signUp')}} className={styles.loginTitle}>Авторизация</h2>
-      <h2 onClick={() => {setLogin('registration')}} className={styles.loginTitle}>Регистрация</h2>
-      <form className={styles.loginForm} onSubmit={handeSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="email">Имя пользователя:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={formState.email}
-            onChange={onChange}
-            required
-            autoComplete="off"
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="password">Пароль:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formState.password}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Обработка данных...' : 'Войти'}
-        </button>
-      </form>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
+}
 
-  if (login === 'registration')
-    return (
-      <div className={styles.loginContainer}>
-      <h2 onClick={() => {setLogin('signUp')}} className={styles.loginTitle}>Авторизация</h2>
-      <h2 onClick={() => {setLogin('registration')}} className={styles.loginTitle}>Регистрация</h2>
-      <form className={styles.loginForm} onSubmit={handeSubmit1}>
-        <div className={styles.formGroup}>
-        <label htmlFor="name">Имя пользователя:</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={formState1.userName}
-            onChange={onChange1}
-            required
-            autoComplete="off"
-          />
-          <label htmlFor="email">Почта:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={formState1.email}
-            onChange={onChange1}
-            required
-            autoComplete="off"
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="password">Пароль:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formState1.password}
-            onChange={onChange1}
-            required
-          />
-        </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Обработка данных...' : 'Регистрация'}
-        </button>
-      </form>
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+export const AuthForm = () => {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const token = useSelector(getToken);
+
+  if (token) return <Navigate to={ROUTES.PROFILE} />;
+
+  return (
+    <Box
+      width={364}
+      sx={{
+        margin: '40px auto',
+        backgroundColor: '#ffffff',
+      }}
+    >
+      <div className={s.header}>
+        <div className={s.title}>Hello, world!</div>
+        <div className={s.subtitle}>{value ? 'Пройдите авторизацию' : 'Создайте аккаунт'}</div>
       </div>
-  )
+
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Авторизация" {...a11yProps(0)} sx={styles.tab} />
+          <Tab label="Регистрация" {...a11yProps(1)} sx={styles.tab} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <SignInForm />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        Регистрация
+      </CustomTabPanel>
+    </Box>
+  );
 };

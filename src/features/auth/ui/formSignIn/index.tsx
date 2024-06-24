@@ -52,14 +52,13 @@ export const SignInForm = () => {
 
 
   return (
-    <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={formik.handleSubmit} noValidate>
       <Box
-        width={364}
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '16px',
+          gap: "16px",
         }}
       >
         <TextField sx={styles.input}

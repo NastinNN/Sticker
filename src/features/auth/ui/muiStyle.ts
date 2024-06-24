@@ -18,6 +18,9 @@ export const styles = {
       display: "none",
       borderBottomColor: "transparent"
     },
+    "& .MuiFilledInput-input": {
+      paddingTop: "20px",
+    },
     "& .MuiInputBase-root": {
       color: 'black',
       backgroundColor: 'rgb(42,47,55, 0.02)',
@@ -47,17 +50,18 @@ export const styles = {
       fontFamily: "Jost",
       fontSize: "16px",
       textTransform: "capitalize",
+      padding: "10px 0",
 
       "&:hover": {
         backgroundColor: "#166dd0",
         boxShadow: "none",
       },
   },
-
-  link: {
-    a: {
-      fontFamily: "Jost",
-      marginTop: "8px"
-    }
+  
+  tab: {
+    flexGrow: "1",
+    fontFamily: "Jost",
+    textTransform: "capitalize",
+    fontSize: "12px",
   }
 };

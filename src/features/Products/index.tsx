@@ -38,7 +38,7 @@ export const ProductView = ({ product }: ProductProps) => {
             {product.views}
           </div>
 
-          <PhotoProvider>
+          <PhotoProvider maskOpacity={0.7}>
             <PhotoView src={product.image}>
               <div className={s.image}>
                 <img src={product.image} alt="Product image" />
