@@ -4,13 +4,14 @@ import { BackNavigateIcon } from 'assets/icons/navigateIcon';
 import classes from 'classnames';
 import { useParsDate } from 'hooks/useParsDate';
 import { useParsPhone } from 'hooks/useParsPhone';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useNavigate } from 'react-router-dom';
 import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
 
 import s from './product.module.css';
+import { useUpdateViewsMutation } from 'services/products';
 
 type ProductProps = {
   product: Product;
@@ -19,6 +20,17 @@ type ProductProps = {
 export const ProductView = ({ product }: ProductProps) => {
   const [showPhone, setShowPhone] = useState(false);
   const navigate = useNavigate();
+
+  const id = product.id;
+  const views = product.views + 1;
+
+  const [updateProduct, { isLoading, isSuccess }] = useUpdateViewsMutation();
+  
+
+  useEffect(() => {
+    updateProduct({id, views});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [location, setLocation] = useState<any>(null);
   const [center, setCenter] = useState<any>([51.660781, 39.200296]);

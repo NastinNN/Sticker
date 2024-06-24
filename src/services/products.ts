@@ -74,6 +74,17 @@ export const productsApi = createApi({
       invalidatesTags: ['Product'],
     }),
 
+    updateViews: builder.mutation<Product, { id: number, views: number }>({
+      query: (args) => ({
+        url: `/products/${args.id}`,
+        method: 'PATCH',
+        body: {
+          ...args
+        },
+      }),
+      invalidatesTags: ['Product'],
+    }),
+
     updateProduct: builder.mutation<Product, CreateProductForm & { id: number }>({
       query: (args) => ({
         url: `/products/${args.id}`,
@@ -95,4 +106,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetProductUserIdQuery, useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useGetRecProductQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation } = productsApi;
+export const { useGetProductUserIdQuery, useGetProductQuery, useGetProductListQuery, useGetProductPaginationQuery, useGetProductProfileQuery, useGetRecProductQuery, useCreateProductMutation, useDeleteProductMutation, useUpdateProductMutation, useUpdateViewsMutation } = productsApi;
