@@ -1,5 +1,4 @@
 import { Container } from 'features/page-wrapper/container';
-import { useFetch } from 'hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import Loader from 'shared/components/loader';
 import { ProductView } from '../../features/Products';

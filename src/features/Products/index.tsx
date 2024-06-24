@@ -76,7 +76,7 @@ export const ProductView = ({ product }: ProductProps) => {
         </div>
 
         <div className={s.sidebar}>
-          <div className={s.price}>{product.price} Р</div>
+          <div className={s.price}>{product.price.toLocaleString('ru-RU')} Р</div>
           <div className={s.phone}>
             <a
               href={`tel: ${product.phone}`}

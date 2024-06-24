@@ -27,7 +27,7 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
         </div>
 
         <div className={s.textContent}>
-          <div className={s.price}>{productCard.price} Р</div>
+          <div className={s.price}>{productCard.price.toLocaleString('ru-RU')} Р</div>
           <div className={s.footer}>
             <div>{useParsDate(productCard.publication_date)}</div>
             <div className={s.views}><EyeIcon /> {productCard.views}</div>
