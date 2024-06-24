@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  flex: 0;
   height: 448px;
   background-color: #FFFFFF;
 
@@ -12,10 +14,10 @@
 }
 
 .coverImage {
+  flex-shrink: 0;
   position: relative;
   height: 200px;
   width: 100%;
-  /* overflow: hidden; */
 }
 
 .mark {
