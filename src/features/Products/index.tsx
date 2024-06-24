@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
 
+
 import s from './product.module.css';
 
 type ProductProps = {
