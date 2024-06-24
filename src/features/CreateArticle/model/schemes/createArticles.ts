@@ -5,7 +5,9 @@ export type CreateProductForm = {
   description: string;
   image: string;
   category: string;
-  price: string;
+  price: number | null;
+  phone: string;
+  location: string;
 };
 
 export type CreateProductParams = CreateProductForm & {
@@ -15,12 +17,27 @@ export type CreateProductParams = CreateProductForm & {
 
 export const сreateProductFormValidationScheme = object().shape({
   title: string()
-    .min(3, 'Слишком коротко')
-    .max(10, 'Слишком многословно')
-    .required('Заголовок обязательный')
-    .default(''),
-  description: string().required('Описание обязательно').default(''),
-  image: string().required('Обложка обязательна').default(''),
-  category: string().default('clothes'),
-  price: string().required('Цена обязательна').default('')
+  .min(3, 'Слишком короткое название объявления')
+  .max(125, 'Превышено допустимое количество символов')
+  .required('Укажите название')
+  .default(''),
+  description: string()
+  .max(3000, 'Превышено допустимое количество символов')
+  .default(''),
+  image: string().
+  required('Загрузите изображение').
+  default(''),
+  category: string()
+  .default('cars'),
+  price: number()
+  .required('Укажите цену')
+  .default(null),
+  phone: string()
+  .required('')
+  .matches(/(\+7)(\d{10})/, 'Неверный формат телефона')
+  .required('Укажите номер телефона')
+  .default(''),
+  location: string()
+  .required('Укажите приблизительное местоположение (город, улица, станция метро)')
+  .default(''),
 });

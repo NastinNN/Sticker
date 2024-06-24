@@ -184,7 +184,7 @@ export const SignUpForm = () => {
         </FormControl>
 
         <Button variant="contained" fullWidth sx={styles.button} type="submit" disabled={isLoading}>
-          Создать аккаунт
+        {isLoading ? 'Создать аккаунт...' : 'Создать аккаунт'}
         </Button>
       </Box>
     </Box>

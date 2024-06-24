@@ -54,12 +54,14 @@ export const productsApi = createApi({
       providesTags: ['RecProduct'],
     }),
 
-    createProduct: builder.mutation<unknown, CreateProductForm & { user_id: number }>({
+    createProduct: builder.mutation<unknown, CreateProductForm & { user_id: number, articul: string }>({
       query: args => ({
         url: '/products',
         method: 'POST',
         body: {
           publication_date: new Date().toISOString(),
+          status: true,
+          views: 0,
           ...args,
         },
       }),

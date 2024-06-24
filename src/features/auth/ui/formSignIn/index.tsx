@@ -113,7 +113,7 @@ export const SignInForm = () => {
         </FormControl>
 
         <Button variant="contained" fullWidth sx={styles.button} type="submit" disabled={isLoading}>
-          Войти
+        {isLoading ? 'Войти...' : 'Войти'}
         </Button>
       </Box>
     </Box>
