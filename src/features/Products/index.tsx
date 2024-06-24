@@ -5,10 +5,10 @@ import classes from 'classnames';
 import { useParsDate } from 'hooks/useParsDate';
 import { useParsPhone } from 'hooks/useParsPhone';
 import { useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useNavigate } from 'react-router-dom';
 import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
-
 
 import s from './product.module.css';
 
@@ -37,9 +37,15 @@ export const ProductView = ({ product }: ProductProps) => {
             <EyeIcon />
             {product.views}
           </div>
-          <div className={s.image}>
-            <img src={product.image} alt="Product image" />
-          </div>
+
+          <PhotoProvider>
+            <PhotoView src={product.image}>
+              <div className={s.image}>
+                <img src={product.image} alt="Product image" />
+              </div>
+            </PhotoView>
+          </PhotoProvider>
+
           <div className={s.textTitle}>Описание:</div>
           <div className={s.text}>{product.description}</div>
           <div className={s.textTitle}>
@@ -55,7 +61,7 @@ export const ProductView = ({ product }: ProductProps) => {
               }}
               state={{ center: center, zoom: 15, controls: ['zoomControl', 'fullscreenControl'] }}
               modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode']}
-              style={{width: "100%", height: "325px"}}
+              style={{ width: '100%', height: '325px' }}
             >
               <Placemark
                 modules={['geoObject.addon.balloon']}

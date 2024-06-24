@@ -4,6 +4,7 @@ import './global.css';
 import { router } from './router';
 import { rootStore } from 'store';
 import { YMaps } from '@pbe/react-yandex-maps';
+import 'react-photo-view/dist/react-photo-view.css';
 
 export const App = () => {
   return (
