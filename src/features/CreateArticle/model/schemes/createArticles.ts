@@ -5,7 +5,7 @@ export type CreateProductForm = {
   description: string;
   image: string;
   category: string;
-  price: number | null;
+  price: number;
   phone: string;
   location: string;
 };
@@ -31,7 +31,9 @@ export const сreateProductFormValidationScheme = object().shape({
   .default('cars'),
   price: number()
   .required('Укажите цену')
-  .default(null),
+  .min(1, 'Минимальное значение цены - 1')
+  .typeError('Неверный формат')
+  .default(0),
   phone: string()
   .required('')
   .matches(/(\+7)(\d{10})/, 'Неверный формат телефона')

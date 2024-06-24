@@ -117,6 +117,7 @@ export const CreateProductForm = () => {
                   variant="filled"
                   id="price"
                   name="price"
+                  type='number'
                   placeholder="Введите цену"
                   value={formik.values.price}
                   onChange={formik.handleChange}
@@ -128,6 +129,8 @@ export const CreateProductForm = () => {
             </Grid>
           </Grid>
 
+          <Grid container spacing={2}>
+          <Grid item xs={6}>
           <Box width="100%" className={s.input}>
             <label htmlFor="phone" className={s.label}>
               Телефон
@@ -147,6 +150,8 @@ export const CreateProductForm = () => {
               helperText={formik.touched.phone && formik.errors.phone}
             />
           </Box>
+          </Grid>
+          </Grid>
 
 
           <Box width="100%" className={s.input}>
