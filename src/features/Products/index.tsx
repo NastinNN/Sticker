@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import type { Product } from '../../shared/types/product';
 import { RecProduct } from './RecProduct';
 
-import s from './product.module.css';
 import { useUpdateViewsMutation } from 'services/products';
+import s from './product.module.css';
 
 type ProductProps = {
   product: Product;
@@ -25,12 +25,11 @@ export const ProductView = ({ product }: ProductProps) => {
   const views = product.views + 1;
 
   const [updateProduct, { isLoading, isSuccess }] = useUpdateViewsMutation();
-  
 
   useEffect(() => {
-    updateProduct({id, views});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    updateProduct({ id, views });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [location, setLocation] = useState<any>(null);
   const [center, setCenter] = useState<any>([51.660781, 39.200296]);
@@ -41,72 +40,77 @@ export const ProductView = ({ product }: ProductProps) => {
         <BackNavigateIcon />
       </div>
       <div className={s.content}>
-        <div className={s.contentMain}>
-          <p className={s.date}>{useParsDate(product.publication_date)}</p>
-          <h2 className={s.title}>{product.title}</h2>
-          <p className={s.id}>{product.articul}</p>
-          <div className={s.views}>
-            <EyeIcon />
-            {product.views}
+        <div className={s.contentHeader}>
+          <div className={s.leftSection}>
+            <p className={s.date}>{useParsDate(product.publication_date)}</p>
+            <h2 className={s.title}>{product.title}</h2>
+            <p className={s.id}>{product.articul}</p>
           </div>
 
-          <PhotoProvider maskOpacity={0.7}>
-            <PhotoView src={product.image}>
-              <div className={s.image}>
-                <img src={product.image} alt="Product image" />
-              </div>
-            </PhotoView>
-          </PhotoProvider>
-
-          <p className={s.textTitle}>Описание:</p>
-          <p className={s.text}>{product.description}</p>
-          <p className={s.textTitle}>
-            Местоположение: <span className={s.text}>{product.location}</span>
-          </p>
-          <div className={s.map}>
-            <Map
-              onLoad={ymaps => {
-                ymaps.geocode(`${product.location}`).then(function (res) {
-                  setLocation(res.geoObjects.get(0).geometry?.getBounds()?.slice(0, 1).flat());
-                  setCenter(res.geoObjects.get(0).geometry?.getBounds()?.slice(0, 1).flat());
-                });
-              }}
-              state={{ center: center, zoom: 15, controls: ['zoomControl', 'fullscreenControl'] }}
-              modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode']}
-              style={{ width: '100%', height: '325px' }}
-            >
-              <Placemark
-                modules={['geoObject.addon.balloon']}
-                geometry={location}
-                properties={{
-                  balloonContentBody: `${product.location}`,
-                  hintContent: `${product.location}`,
+          <div className={s.rightSection}>
+            <p className={s.price}>{product.price.toLocaleString('ru-RU')} Р</p>
+            <div className={s.phone}>
+              <a
+                href={`tel: ${product.phone}`}
+                className={showPhone ? classes(s.phoneNumber, s.phoneNumberActive) : s.phoneNumber}
+              >
+                {useParsPhone(product.phone)}
+              </a>
+              <div
+                className={!showPhone ? s.hiddenPhone : classes(s.hiddenPhone, s.hiddenPhoneNotActive)}
+                onClick={() => {
+                  setShowPhone(!showPhone);
                 }}
-              />
-            </Map>
+              >
+                Показать номер
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className={s.sidebar}>
-          <p className={s.price}>{product.price.toLocaleString('ru-RU')} Р</p>
-          <div className={s.phone}>
-            <a
-              href={`tel: ${product.phone}`}
-              className={showPhone ? classes(s.phoneNumber, s.phoneNumberActive) : s.phoneNumber}
-            >
-              {useParsPhone(product.phone)}
-            </a>
-            <div
-              className={!showPhone ? s.hiddenPhone : classes(s.hiddenPhone, s.hiddenPhoneNotActive)}
-              onClick={() => {
-                setShowPhone(!showPhone);
-              }}
-            >
-              Показать номер
+        <div className={s.contentMain}>
+          <div className={s.leftSection}>
+            <div className={s.views}>
+              <EyeIcon />
+              {product.views}
+            </div>
+            <PhotoProvider maskOpacity={0.7}>
+              <PhotoView src={product.image}>
+                <div className={s.image}>
+                  <img src={product.image} alt="Product image" />
+                </div>
+              </PhotoView>
+            </PhotoProvider>
+            <p className={s.textTitle}>Описание:</p>
+            <p className={s.text}>{product.description}</p>
+            <p className={s.textTitle}>
+              Местоположение: <span className={s.text}>{product.location}</span>
+            </p>
+            <div className={s.map}>
+              <Map
+                onLoad={ymaps => {
+                  ymaps.geocode(`${product.location}`).then(function (res) {
+                    setLocation(res.geoObjects.get(0).geometry?.getBounds()?.slice(0, 1).flat());
+                    setCenter(res.geoObjects.get(0).geometry?.getBounds()?.slice(0, 1).flat());
+                  });
+                }}
+                state={{ center: center, zoom: 15, controls: ['zoomControl', 'fullscreenControl'] }}
+                modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode']}
+                style={{ width: '100%', height: '325px' }}
+              >
+                <Placemark
+                  modules={['geoObject.addon.balloon']}
+                  geometry={location}
+                  properties={{
+                    balloonContentBody: `${product.location}`,
+                    hintContent: `${product.location}`,
+                  }}
+                />
+              </Map>
             </div>
           </div>
 
-          <div className={s.recommendations}>
+          <div className={s.rightSection}>
             <RecProduct category={product.category} id={product.id} />
           </div>
         </div>

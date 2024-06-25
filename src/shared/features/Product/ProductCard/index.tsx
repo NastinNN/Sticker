@@ -22,7 +22,7 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
         <div className={s.Header}>
           <div className={s.textContent}>
             <p className={s.title}>{productCard.title}</p>
-            <p className={s.text}>{productCard.description.length > 110 ? (productCard.description.substring(0, 110)+"...") : productCard.description}</p>
+            <p className={s.text}>{productCard.description.length > 80 ? (productCard.description.substring(0, 80)+"...") : productCard.description}</p>
           </div>
         </div>
 

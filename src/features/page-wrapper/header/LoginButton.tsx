@@ -5,7 +5,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import { LoginIcon } from '../../../assets/icons/loginIcon';
 import { ROUTES } from '../../../router/routes';
 import { Menu } from '../../../shared/features/Menu';
-import { getToken, getUserName, getUserSurname } from '../../../store/userData';
+import { getToken } from '../../../store/userData';
 import s from './header.module.css';
 
 export const LoginButton = () => {
@@ -25,13 +25,14 @@ export const LoginButton = () => {
   return (
     <>
       {token ? (
+
         <div className={s.dropdownMenu}>
           <div className={s.loginButton} onClick={(window.location.pathname === ROUTES.PROFILE ||
           window.location.pathname === ROUTES.CREATE ||
             window.location.pathname.indexOf(`${ROUTES.EDIT}`) !== -1 ) ?
             undefined : handleClickInside } ref={ref}>
             <LoginIcon />
-            <div>Профиль</div>
+            <div className={s.loginButtonTitle}>Профиль</div>
           </div>
           {(window.location.pathname !== ROUTES.PROFILE &&
           window.location.pathname !== ROUTES.CREATE &&
@@ -40,7 +41,7 @@ export const LoginButton = () => {
       ) : (
         <Link to={ROUTES.AUTH} className={s.loginButton}>
           <LoginIcon />
-          <div>Войти</div>
+          <div className={s.loginButtonTitle}>Войти</div>
         </Link>
       )}
     </>

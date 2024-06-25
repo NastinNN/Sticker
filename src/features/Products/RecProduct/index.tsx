@@ -18,6 +18,7 @@ export const RecProduct = ({ category, id }: RecProductProps) => {
       <div className={s.wrapper}>
         <p className={s.title}>Смотрите также</p>
         {isLoading && <Loader />}
+        
         <div className={s.cardList}>{recArr?.map((rec, index) => <RecCard product={rec} key={index} />)}</div>
       </div>
     );

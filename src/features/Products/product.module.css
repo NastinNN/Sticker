@@ -15,17 +15,38 @@
 
 .content {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 40px;
-
+  grid-template-rows: repeat(2, max-content);
+  row-gap: 24px;
   padding-top: 32px;
 }
 
-.contentMain {
+.contentHeader {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 40px;
+}
+
+.leftSection {
   grid-column: 1 / 9;
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.rightSection {
+  grid-column: -1 / -5;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contentMain {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 40px;
+  grid-row: 2;
 }
 
 
@@ -88,7 +109,6 @@
 .price {
   font-size: 24px;
   font-weight: 700;
-  padding-bottom: 24px;
 }
 
 .phone {
@@ -133,11 +153,4 @@
 .hiddenPhoneNotActive {
   opacity: 0;
   visibility: hidden;
-}
-
-.recommendations {
-  padding-top: 67px;
-}
-
-.ymap {
 }

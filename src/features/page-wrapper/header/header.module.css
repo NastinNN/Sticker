@@ -12,19 +12,22 @@
 .leftSection {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+  padding-right: 40px;
 }
 
 .centerSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 566px;
 }
 
 .rightSection {
+  flex-shrink: 0;
+  padding-left: 24px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 56px;
 }
 
 .logo {
@@ -41,7 +44,18 @@
 
 .seach {
   display: flex;
-  padding-right: 24px;
+  align-items: center;
+}
+
+.searchInput {
+  height: 36px;
+  width: 100%;
+  padding: 6px 8px;
+  outline: none;
+  border: 1px solid var(--color-blue);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: #424242;
 }
 
 .searchButton {
@@ -65,17 +79,6 @@
   background-color: var(--color-blue-hover);
 }
 
-.searchInput {
-  height: 36px;
-  width: 470px;
-  padding: 6px 8px;
-  outline: none;
-  border: 1px solid var(--color-blue);
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  color: #424242;
-}
-
 .buttonCreateAd {
   height: 36px;
   background-color: var(--color-yellow);
@@ -85,6 +88,7 @@
   font-weight: 500;
   text-decoration: none;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   text-align: center;
   cursor: pointer;
@@ -104,8 +108,10 @@
 
   display: flex;
   justify-content: space-between;
-  gap: 0px 8px;
+  gap: 8px;
+  padding-left: 16px;
   align-items: center;
+
 
   transition: 200ms;
   transition-timing-function: ease-in-out;
@@ -135,3 +141,21 @@
 .dropdownMenu {
   position: relative;
 }
+
+@media (max-width: 1180px) {
+  .loginButtonTitle {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .buttonCreateAd {
+    display: none;
+  }
+} 
+
+@media (max-width: 535px) {
+  .seach {
+    display: none;
+  }
+} 

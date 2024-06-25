@@ -20,6 +20,7 @@ export const Header = () => {
               <Logo />
             </Link>
           </div>
+          
           <div className={s.centerSection}>
             {window.location.pathname !== ROUTES.CATALOG && window.location.pathname !== ROUTES.PROFILE && (
               <div className={s.seach}>

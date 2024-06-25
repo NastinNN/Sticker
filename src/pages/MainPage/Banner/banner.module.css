@@ -1,8 +1,8 @@
 .container {
-  height: 504px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 80px 0;
 }
 
 .info {
@@ -26,6 +26,56 @@
 }
 
 .img {
-  height: 400px;
+  max-width: 500px;
   padding: 0 50px;
+}
+
+@media (max-width: 890px) {
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  .title {
+    font-size: 36px; 
+  }
+
+  .text {
+    display: none;
+  }
+
+  .img {
+    max-width: 400px;
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .img {
+    max-width: 350px;
+    padding: 0 50px;
+  }
+
+  .title {
+    font-size: 30px; 
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 40px 0;
+  }
+
+  .img {
+    max-width: 300px;
+    padding: 0 50px;
+  }
+
+  .title {
+    font-size: 24px; 
+  }
 }

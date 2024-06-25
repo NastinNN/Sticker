@@ -37,3 +37,20 @@
 
   border-left: 1px solid rgb(66, 66, 66, 0.5);
 }
+
+@media (max-width: 550px) { 
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .leftSection {
+    justify-content: center;
+  }
+
+  .logoText {
+    display: none;
+  }
+}

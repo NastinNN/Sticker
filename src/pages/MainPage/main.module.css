@@ -5,8 +5,13 @@
 
 .category {
   display: flex;
+  overflow-x: auto;
   gap: 20px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+}
+
+.category::-webkit-scrollbar {
+  display: none;
 }
 
 .contentWrapper {
