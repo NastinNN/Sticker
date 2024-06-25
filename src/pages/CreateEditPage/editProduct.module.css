@@ -1,0 +1,25 @@
+.wrapper {
+  padding: var(--pd40);
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 32px;
+}
+
+.buttonBack {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.6;
+  transition: all ease 0.3s;
+}
+
+.buttonBack:hover {
+  opacity: 1;
+}

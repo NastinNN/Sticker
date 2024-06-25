@@ -18,9 +18,8 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
 
   return (
     <Box
-      width={870}
+    width="100%"
       sx={{
-        margin: '40px auto',
         backgroundColor: '#ffffff',
         padding: '24px 28px',
       }}
@@ -174,7 +173,7 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
             <label htmlFor="location" className={s.label}>
               Местоположение
             </label>
-              {/* <AddressSuggestions token="1c2eb311a11d684c6e682d52d1297e66b99626be" value={location} onChange={(value) => {setLocation(value)}} /> */}
+              {/* <AddressSuggestions token="" value={location} onChange={(value) => {setLocation(value)}} /> */}
             
             <TextField
               sx={styles.createForm}

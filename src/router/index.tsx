@@ -1,7 +1,7 @@
 import { AuthPage } from 'pages/AuthPage';
 import { CatalogPage } from 'pages/CatalogPage/CatalogPage';
-import { CreatePage } from 'pages/CreatePage';
-import { EditPage } from 'pages/EditPage';
+import { CreatePage } from 'pages/CreateEditPage/CreatePage';
+import { EditPage } from 'pages/CreateEditPage/EditPage';
 import { ErrorPage } from 'pages/ErrorPage';
 import { ProductPage } from 'pages/ProductPage/ProductPage';
 import { ProfilePage } from 'pages/ProfilePage/ProfilePage';

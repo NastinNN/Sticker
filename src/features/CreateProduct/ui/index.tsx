@@ -22,7 +22,6 @@ export const CreateProductForm = () => {
     }
   }, [isSuccess, navigate]);
 
-
   const articul = nanoid(12);
 
   const formik = useFormik({

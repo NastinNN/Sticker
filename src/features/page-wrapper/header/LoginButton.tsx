@@ -10,8 +10,6 @@ import s from './header.module.css';
 
 export const LoginButton = () => {
   const token = useSelector(getToken);
-  const userName = useSelector(getUserName);
-  const userSurname = useSelector(getUserSurname);
   const [showMenu, setShowMenu] = useState(false);
 
   const ref = useRef(null);
@@ -28,12 +26,16 @@ export const LoginButton = () => {
     <>
       {token ? (
         <div className={s.dropdownMenu}>
-          <div className={s.loginButton} onClick={window.location.pathname !== ROUTES.PROFILE ?
-            handleClickInside : undefined} ref={ref}>
+          <div className={s.loginButton} onClick={(window.location.pathname === ROUTES.PROFILE ||
+          window.location.pathname === ROUTES.CREATE ||
+            window.location.pathname.indexOf(`${ROUTES.EDIT}`) !== -1 ) ?
+            undefined : handleClickInside } ref={ref}>
             <LoginIcon />
             <div>Профиль</div>
           </div>
-          {window.location.pathname !== ROUTES.PROFILE && <Menu showMenu={showMenu} userName={userName!} userSurname={userSurname!} />}
+          {(window.location.pathname !== ROUTES.PROFILE &&
+          window.location.pathname !== ROUTES.CREATE &&
+        window.location.pathname.indexOf(`${ROUTES.EDIT}`) === -1) && <Menu showMenu={showMenu} />}
         </div>
       ) : (
         <Link to={ROUTES.AUTH} className={s.loginButton}>

@@ -14,8 +14,6 @@ import s from './profile.module.css';
 
 export const ProfilePage = () => {
   const userId = Number(useSelector(getUserId));
-  const userName = useSelector(getUserName);
-  const userSurname = useSelector(getUserSurname);
 
   const [seach, setSeach] = useState('');
   const [filter, setFilter] = useState('all');
@@ -35,7 +33,7 @@ export const ProfilePage = () => {
         {isLoading && <Loader />}
         <div className={s.wrapper}>
           <div className={s.sidebar}>
-            <Menu showMenu={true} userName={userName!} userSurname={userSurname!} />
+            <Menu showMenu={true}/>
           </div>
           <div className={s.content}>
             <div className={s.contentHeader}>
