@@ -60,6 +60,17 @@ export const productsApi = createApi({
       providesTags: ['RecProduct'],
     }),
 
+    updateViews: builder.mutation<Product, { id: number, views: number }>({
+      query: (args) => ({
+        url: `/products/${args.id}`,
+        method: 'PATCH',
+        body: {
+          ...args
+        },
+      }),
+      invalidatesTags: ['Product'],
+    }),
+
     createProduct: builder.mutation<unknown, CreateProductForm & { user_id: number, articul: string }>({
       query: args => ({
         url: '/products',
@@ -74,18 +85,7 @@ export const productsApi = createApi({
       invalidatesTags: ['Product'],
     }),
 
-    updateViews: builder.mutation<Product, { id: number, views: number }>({
-      query: (args) => ({
-        url: `/products/${args.id}`,
-        method: 'PATCH',
-        body: {
-          ...args
-        },
-      }),
-      invalidatesTags: ['Product'],
-    }),
-
-    updateProduct: builder.mutation<Product, CreateProductForm & { id: number }>({
+    updateProduct: builder.mutation<Product, CreateProductForm & { id: number, location: string }>({
       query: (args) => ({
         url: `/products/${args.id}`,
         method: 'PATCH',

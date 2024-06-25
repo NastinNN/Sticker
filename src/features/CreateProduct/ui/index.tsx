@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { сreateProductFormValidationScheme } from '../model/schemes/createArticles';
 
 import { nanoid } from '@reduxjs/toolkit';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FormProduct } from 'shared/features/FormOroduct';
 import { ROUTES } from '../../../router/routes';
@@ -22,6 +22,7 @@ export const CreateProductForm = () => {
     }
   }, [isSuccess, navigate]);
 
+
   const articul = nanoid(12);
 
   const formik = useFormik({
@@ -36,5 +37,5 @@ export const CreateProductForm = () => {
 
   if (!userId) return <Navigate to={ROUTES.AUTH} />;
 
-  return <FormProduct formik={formik} buttonText="Опубликовать" isLoading={isLoading} />;
+  return <FormProduct formik={formik} buttonText="Опубликовать" isLoading={isLoading}/>;
 };

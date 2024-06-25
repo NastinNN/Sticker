@@ -9,6 +9,7 @@ import { FormProduct } from 'shared/features/FormOroduct';
 import { ROUTES } from '../../../router/routes';
 import {  useGetProductQuery, useUpdateProductMutation } from '../../../services/products';
 import { getUserId } from '../../../store/userData';
+import { string } from 'yup';
 
 export const EditProductForm = () => {
 
@@ -31,7 +32,7 @@ export const EditProductForm = () => {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: val => {
-      updateProduct({ ...val, id: Number(id)});
+      updateProduct({ ...val, id: Number(id) });
     },
   });
 

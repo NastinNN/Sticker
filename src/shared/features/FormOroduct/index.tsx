@@ -1,16 +1,21 @@
-import { Box, Button, Grid, MenuItem, TextField } from "@mui/material";
+import { Box, Button, FormControl, FormHelperText, Grid, MenuItem, TextField } from '@mui/material';
 
-import { styles } from "./MuiFormProductStyle"
-import s from "./formaProduct.module.css"
-import { categoriesCreateSelect } from "../FilterData/filter";
+import { categoriesCreateSelect } from '../FilterData/filter';
+import { styles } from './MuiFormProductStyle';
+import s from './formaProduct.module.css';
+
+import { AddressSuggestions } from 'react-dadata';
+import './react-dadata.css';
 
 type FormProductProps = {
   formik: any;
   buttonText: string;
-  isLoading: boolean
+  isLoading: boolean;
+
 };
 
-export const FormProduct = ({formik, buttonText, isLoading}: FormProductProps) => {
+export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps) => {
+
   return (
     <Box
       width={870}
@@ -166,9 +171,11 @@ export const FormProduct = ({formik, buttonText, isLoading}: FormProductProps) =
           </Box>
 
           <Box width="100%" className={s.input}>
-            <label htmlFor="title" className={s.label}>
+            <label htmlFor="location" className={s.label}>
               Местоположение
             </label>
+              {/* <AddressSuggestions token="1c2eb311a11d684c6e682d52d1297e66b99626be" value={location} onChange={(value) => {setLocation(value)}} /> */}
+            
             <TextField
               sx={styles.createForm}
               fullWidth

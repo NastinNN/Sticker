@@ -21,24 +21,31 @@ export const сreateProductFormValidationScheme = object().shape({
   .max(125, 'Превышено допустимое количество символов')
   .required('Укажите название')
   .default(''),
+
   description: string()
   .max(3000, 'Превышено допустимое количество символов')
+  .min(3, 'Слишком короткое описание')
+  .required('Добавьте описение')
   .default(''),
-  image: string().
-  required('Загрузите изображение').
-  default(''),
+
+  image: string()
+  .required('Загрузите изображение')
+  .default(''),
+
   category: string()
   .default('cars'),
+
   price: number()
   .required('Укажите цену')
-  .min(1, 'Минимальное значение цены - 1')
+  .min(1, 'Минимальное значение цены 1')
   .typeError('Неверный формат')
   .default(0),
+
   phone: string()
-  .required('')
   .matches(/(\+7)(\d{10})/, 'Неверный формат телефона')
   .required('Укажите номер телефона')
   .default(''),
+
   location: string()
   .required('Укажите приблизительное местоположение (город, улица, станция метро)')
   .default(''),
