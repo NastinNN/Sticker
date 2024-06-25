@@ -2,7 +2,7 @@ import { AuthPage } from 'pages/AuthPage';
 import { CatalogPage } from 'pages/CatalogPage/CatalogPage';
 import { CreatePage } from 'pages/CreateEditPage/CreatePage';
 import { EditPage } from 'pages/CreateEditPage/EditPage';
-import { ErrorPage } from 'pages/ErrorPage';
+import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
 import { ProductPage } from 'pages/ProductPage/ProductPage';
 import { ProfilePage } from 'pages/ProfilePage/ProfilePage';
 import { createBrowserRouter, createHashRouter } from 'react-router-dom';
