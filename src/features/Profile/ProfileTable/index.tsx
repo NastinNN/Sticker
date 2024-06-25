@@ -34,6 +34,7 @@ export const ProfileTable = ({
   filter,
   setFilter,
 }: ProfileTableProps) => {
+
   const inputRef = useRef<HTMLInputElement>(null!);
 
   if (data)

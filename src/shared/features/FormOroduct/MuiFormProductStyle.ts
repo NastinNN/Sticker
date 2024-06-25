@@ -40,6 +40,7 @@ export const styles = {
   },
   
   button: {
+      marginTop: "16px",
       backgroundColor: "#3A95FF",
       color: "#FFFFFF",
       boxShadow: "none",

@@ -35,11 +35,11 @@ export const ProfileProductCard = ({ profileProductCard }: ProfileProductProps) 
       <td>{useParsCategory(profileProductCard.category)}</td>
       <td>{useParsDate(profileProductCard.publication_date)}</td>
       <td>{profileProductCard.status ? 'Опубликовано' : 'Скрыто'}</td>
-      <td className={s.menu} onClick={handleClickInside} ref={refTable}>
-        <div>
+      <td className={s.menu} >
+        <div onClick={handleClickInside} ref={refTable}>
           <DotsMenuIcon />
-          <MenuTable id={profileProductCard.id} isOpen={isOpen} />
         </div>
+          <MenuTable id={profileProductCard.id} isOpen={isOpen} />
       </td>
     </tr>
   );

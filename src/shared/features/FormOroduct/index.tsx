@@ -20,6 +20,7 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
     <Box
     width="100%"
       sx={{
+
         backgroundColor: '#ffffff',
         padding: '24px 28px',
       }}

@@ -24,6 +24,7 @@ export const ProfilePage = () => {
   const limit = 8;
   const [sortDate, setSortDate] = useState(true);
 
+
   const { data, isLoading, isFetching } = useGetProductProfileQuery({ userId, page, limit, sortDate, seach, filter });
 
   if (!userId) return <Navigate to={ROUTES.AUTH} />;

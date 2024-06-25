@@ -5,19 +5,18 @@ import { сreateProductFormValidationScheme } from '../model/schemes/createArtic
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Loader from 'shared/components/loader';
 import { FormProduct } from 'shared/features/FormOroduct';
 import { ROUTES } from '../../../router/routes';
-import {  useGetProductQuery, useUpdateProductMutation } from '../../../services/products';
+import { useGetProductQuery, useUpdateProductMutation } from '../../../services/products';
 import { getUserId } from '../../../store/userData';
-import { string } from 'yup';
 
 export const EditProductForm = () => {
-
   const { id } = useParams();
   const userId = useSelector(getUserId);
 
   const navigate = useNavigate();
-  const [updateProduct, { isLoading, isSuccess }] = useUpdateProductMutation();
+  const [updateProduct, { isLoading: setLoading, isSuccess }] = useUpdateProductMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -25,9 +24,8 @@ export const EditProductForm = () => {
     }
   }, [isSuccess, navigate]);
 
-
   const formik = useFormik({
-    initialValues: сreateProductFormValidationScheme.getDefault(), 
+    initialValues: сreateProductFormValidationScheme.getDefault(),
     validationSchema: сreateProductFormValidationScheme,
     validateOnChange: false,
     validateOnBlur: false,
@@ -36,8 +34,7 @@ export const EditProductForm = () => {
     },
   });
 
-
   if (!userId) return <Navigate to={ROUTES.AUTH} />;
 
-  return <FormProduct formik={formik} buttonText="Изменить" isLoading={isLoading} />;
+  return <FormProduct formik={formik} buttonText="Изменить" isLoading={setLoading} /> 
 };
