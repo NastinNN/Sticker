@@ -13,11 +13,11 @@ export const Footer = () => {
           <div className={s.leftSection}>
             <Link to={ROUTES.ROOT} className={s.logo}>
               <Logo />
-              <div className={s.logoText}>Доска обявлений</div>
+              <p className={s.logoText}>Доска обявлений</p>
             </Link>
           </div>
 
-          <div className={s.rightSection}>© ООО «Доска диджитал», 2022</div>
+          <p className={s.rightSection}>© ООО «Доска диджитал», 2022</p>
         </div>
       </Container>
     </footer>

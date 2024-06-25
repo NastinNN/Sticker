@@ -8,9 +8,7 @@ export const PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <BaseContainer>
       <Header />
-
         <main>{children}</main>
-
       <Footer />
     </BaseContainer>
   );

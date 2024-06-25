@@ -21,15 +21,15 @@ export const ProductCard = ({ productCard }: ProductCardProps) => {
       <div className={s.content}>
         <div className={s.Header}>
           <div className={s.textContent}>
-            <div className={s.title}>{productCard.title}</div>
-            <div className={s.text}>{productCard.description.length > 80 ? (productCard.description.substring(0, 80)+"...") : productCard.description}</div>
+            <p className={s.title}>{productCard.title}</p>
+            <p className={s.text}>{productCard.description.length > 110 ? (productCard.description.substring(0, 110)+"...") : productCard.description}</p>
           </div>
         </div>
 
         <div className={s.textContent}>
-          <div className={s.price}>{productCard.price.toLocaleString('ru-RU')} Р</div>
+          <p className={s.price}>{productCard.price.toLocaleString('ru-RU')} Р</p>
           <div className={s.footer}>
-            <div>{useParsDate(productCard.publication_date)}</div>
+            <p>{useParsDate(productCard.publication_date)}</p>
             <div className={s.views}><EyeIcon /> {productCard.views}</div>
           </div>
         </div>

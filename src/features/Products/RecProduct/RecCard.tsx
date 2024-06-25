@@ -15,7 +15,7 @@ export const RecCard = ({product}: RecCardProps) => {
       <div className={s.image}>
         <img src={product.image} alt="Rec Image"/>
       </div>
-      <div className={s.desc}>{product.title}</div>
+      <p className={s.desc}>{product.title}</p>
     </Link>
     </>
   )

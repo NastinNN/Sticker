@@ -42,9 +42,9 @@ export const ProductView = ({ product }: ProductProps) => {
       </div>
       <div className={s.content}>
         <div className={s.contentMain}>
-          <div className={s.date}>{useParsDate(product.publication_date)}</div>
-          <div className={s.title}>{product.title}</div>
-          <div className={s.id}>{product.articul}</div>
+          <p className={s.date}>{useParsDate(product.publication_date)}</p>
+          <h2 className={s.title}>{product.title}</h2>
+          <p className={s.id}>{product.articul}</p>
           <div className={s.views}>
             <EyeIcon />
             {product.views}
@@ -58,11 +58,11 @@ export const ProductView = ({ product }: ProductProps) => {
             </PhotoView>
           </PhotoProvider>
 
-          <div className={s.textTitle}>Описание:</div>
-          <div className={s.text}>{product.description}</div>
-          <div className={s.textTitle}>
+          <p className={s.textTitle}>Описание:</p>
+          <p className={s.text}>{product.description}</p>
+          <p className={s.textTitle}>
             Местоположение: <span className={s.text}>{product.location}</span>
-          </div>
+          </p>
           <div className={s.map}>
             <Map
               onLoad={ymaps => {
@@ -88,7 +88,7 @@ export const ProductView = ({ product }: ProductProps) => {
         </div>
 
         <div className={s.sidebar}>
-          <div className={s.price}>{product.price.toLocaleString('ru-RU')} Р</div>
+          <p className={s.price}>{product.price.toLocaleString('ru-RU')} Р</p>
           <div className={s.phone}>
             <a
               href={`tel: ${product.phone}`}

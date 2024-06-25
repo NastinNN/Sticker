@@ -57,7 +57,7 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Box width="100%" className={s.input}>
-                <label htmlFor="title" className={s.label}>
+                <label htmlFor="category" className={s.label}>
                   Категория
                 </label>
                 <TextField

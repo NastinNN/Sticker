@@ -36,7 +36,6 @@ export const Menu = ({ showMenu }: DropdownMenuProps) => {
             : classes(s.menu, s.dropMenu)
       }
     >
-      {/* </div> <div className={window.location.pathname !== (ROUTES.PROFILE) ? (showMenu ? classes(s.menu, s.dropMenu, s.dropMenuActive) : classes(s.menu, s.dropMenu)) : (s.menu)}> */}
       <div className={s.menuTitle}>
         <div className={s.menuProfileIcon}>
           {userName![0]}

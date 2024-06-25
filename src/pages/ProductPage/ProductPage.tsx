@@ -10,14 +10,10 @@ export const ProductPage = () => {
   const { data, isLoading} = useGetProductQuery(id!);
 
   return (
-    <main>
-      <div>
-        <Container>
-          {isLoading && <Loader />}
+    <Container>
+      {isLoading && <Loader />}
 
-          {!!data && !isLoading && <ProductView product={data} />}
-        </Container>
-      </div>
-    </main>
+      {!!data && !isLoading && <ProductView product={data} />}
+    </Container>
   );
 };

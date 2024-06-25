@@ -89,10 +89,9 @@ export const CatalogPage = () => {
           </div>
 
           {isLoading && <Loader />}
-          <div className={s.title}>Найдено всего: {data?.meta.total_items}</div>
-          {/* {!data?.items.length && <div>Объявление не найдено</div>} */}
+          <p className={s.title}>Найдено всего: {data?.meta.total_items}</p>
 
-          {!!data?.items && !isLoading && <ProductList product={data.items} />}
+          {data?.items && !isLoading && <ProductList product={data.items} />}
 
           {data?.meta.total_items !== 0 &&
           <div className={s.pagination}>

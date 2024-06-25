@@ -62,8 +62,8 @@ export const AuthForm = () => {
       }}
     >
       <div className={s.header}>
-        <div className={s.title}>Hello, world!</div>
-        <div className={s.subtitle}>{value ? 'Пройдите авторизацию' : 'Создайте аккаунт'}</div>
+        <p className={s.title}>Hello, world!</p>
+        <p className={s.subtitle}>{value ? 'Пройдите авторизацию' : 'Создайте аккаунт'}</p>
       </div>
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
