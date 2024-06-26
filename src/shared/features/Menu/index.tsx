@@ -38,10 +38,10 @@ export const Menu = ({ showMenu }: DropdownMenuProps) => {
     >
       <div className={s.menuTitle}>
         <div className={s.menuProfileIcon}>
-          {userName![0]}
-          {userSurname![0]}
+          {userName?.charAt(0)}
+          {userSurname?.charAt(0)}
         </div>
-        {userName} {userSurname![0]}.
+        {userName} {userSurname?.charAt(0)}.
       </div>
       <NavLink
         to={`${ROUTES.PROFILE}`}
