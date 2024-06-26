@@ -30,7 +30,7 @@ export const ProfileProductCard = ({ profileProductCard }: ProfileProductProps) 
   return (
     <tr>
       <td className={s.name}>
-        <Link to={`${ROUTES.PRODUCT}/${profileProductCard.id}`}>{profileProductCard.title}</Link>
+        <Link to={`${ROUTES.PRODUCT}?id=${profileProductCard.id}`}>{profileProductCard.title}</Link>
       </td>
       <td>{useParsCategory(profileProductCard.category)}</td>
       <td>{useParsDate(profileProductCard.publication_date)}</td>

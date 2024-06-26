@@ -35,7 +35,7 @@ export const MenuTable = ({ id, isOpen }: MenuTableProps) => {
   return (
     <>
       <div className={isOpen ? classes(s.dropMenu, s.dropMenuActive) : s.dropMenu}>
-        <NavLink to={`${ROUTES.PRODUCT}/${id}`} className={s.dropMenuItem}>
+        <NavLink to={`${ROUTES.PRODUCT}?id=${id}`} className={s.dropMenuItem}>
           <>
             <EyeIcon /> Просмотреть
           </>
