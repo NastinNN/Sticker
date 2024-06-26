@@ -34,12 +34,11 @@ export const ProfileTable = ({
   filter,
   setFilter,
 }: ProfileTableProps) => {
-
   const inputRef = useRef<HTMLInputElement>(null!);
 
   if (data)
     return (
-      <>
+      <div className={s.wrapper}>
         <div className={s.filterRow}>
           <div className={s.seach}>
             <input
@@ -68,33 +67,35 @@ export const ProfileTable = ({
           <Pagination limit={limit} data={data} page={page} isFetching={isFetching} />
         </div>
 
-        <table className={s.table}>
-          <tbody>
-            <tr>
-              <th style={{ width: '275px' }}>Название объявления</th>
-              <th style={{ width: '200px' }}>Категория</th>
-              <th
-                className={s.titleActive}
-                style={{ width: '200px' }}
-                onClick={() => {
-                  setSortDate(!sortDate);
-                }}
-              >
-                Дата публикации <FilterPointerIcon />
-              </th>
-              <th>Статус</th>
-              <th style={{ width: '48px' }}>&nbsp;</th>
-            </tr>
-
-            {!!data.items && <ProfileProductList profileProductList={data.items} />}
-
-            {data.items.length === 0 && (
+        <div className={s.containerTable}>
+          <table className={s.table}>
+            <tbody>
               <tr>
-                <td colSpan={5}>Объявление не найдено</td>
+                <th style={{ width: '275px' }}>Название объявления</th>
+                <th style={{ width: '180px' }}>Категория</th>
+                <th
+                  className={s.titleActive}
+                  style={{ width: '200px' }}
+                  onClick={() => {
+                    setSortDate(!sortDate);
+                  }}
+                >
+                  Дата публикации <FilterPointerIcon />
+                </th>
+                <th style={{ width: '120px' }}>Статус</th>
+                <th style={{ width: '48px' }}>&nbsp;</th>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </>
+
+              {!!data.items && <ProfileProductList profileProductList={data.items} />}
+
+              {data.items.length === 0 && (
+                <tr>
+                  <td colSpan={5}>Объявление не найдено</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
 };

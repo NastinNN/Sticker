@@ -1,11 +1,26 @@
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .filterRow {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   padding: 24px 0;
 }
 
+.containerTable {
+  max-width: 100%;
+  width: 100%;
+  overflow-y: hidden;
+}
+
 .table {
-  width: 865px;
+  overflow-x: auto;
+  width: 100%;
+  table-layout: fixed;
   border-spacing: 0 8px;
 }
 
@@ -16,6 +31,7 @@
   text-align: left;
   padding: 12px 0 12px 24px;
   background-color: #ffffff;
+  white-space: nowrap;
 
   transition: all ease 0.3s;
 }
@@ -24,6 +40,7 @@
   padding: 28px 14px 28px 24px;
   background-color: #ffffff;
   margin-bottom: 8px;
+  white-space: nowrap;
   color: var(--color-black) !important;
 }
 
@@ -40,9 +57,11 @@
 .seach {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .filterSelect {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -50,7 +69,8 @@
 }
 
 .input {
-  width: 420px;
+  flex: 1;
+  width: 100%;
   box-sizing: border-box;
   padding: 8px 16px;
   border: none;
@@ -69,5 +89,12 @@
 }
 
 
+
+@media (max-width: 950px) {
+  .filterRow {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 
 

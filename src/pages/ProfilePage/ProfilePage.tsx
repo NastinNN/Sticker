@@ -33,7 +33,7 @@ export const ProfilePage = () => {
       <Container>
         {isLoading && <Loader />}
         <div className={s.wrapper}>
-          <div className={s.sidebar}>
+          <div className={s.menu}>
             <Menu showMenu={true}/>
           </div>
           <div className={s.content}>

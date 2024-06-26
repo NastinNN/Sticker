@@ -4,12 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стикер - доска объявлений</title>
-    <link rel="icon" href="https://ltdfoto.ru/images/2024/06/03/Exclude.png" type="image/png">
+    <link rel="icon" href="https://ltdfoto.ru/images/2024/06/26/Frame-81.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
 </head>
+<style>
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3A95FF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+</style>
 <body>
-    <div id="app">loading</div>
+    <div id="app">
+      <div class="loader">
+        <div class="spinner">
+        </div>
+      </div>
+    </div>
 </body>
 </html>

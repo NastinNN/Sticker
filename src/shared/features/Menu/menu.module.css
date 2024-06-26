@@ -1,13 +1,13 @@
 .menu {
   align-self: flex-start;
   padding: 0;
-  width: 265px;
   background-color: #ffffff;
   border-radius: 4px;
 }
 
 .dropMenu {
   position: absolute;
+  width: 265px;
   top: 100%;
   right: 0;
   opacity: 0;
@@ -19,6 +19,7 @@
 }
 
 .dropMenuActive {
+  width: 265px;
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
@@ -77,4 +78,10 @@
   height: 40px;
   width: 2px;
   background-color: var(--color-blue);
+}
+
+@media (min-width: 770px) {
+  .menu {
+    width: 275px;
+  }
 }

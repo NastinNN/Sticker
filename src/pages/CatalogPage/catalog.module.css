@@ -72,3 +72,19 @@
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 660px) {
+  .filteRow {
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .filter:last-child {
+    align-items: baseline;
+    flex-direction: column;
+  }
+}

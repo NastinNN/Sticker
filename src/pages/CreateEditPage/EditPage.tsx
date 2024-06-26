@@ -12,7 +12,9 @@ export const EditPage = () => {
   return (
     <Container>
       <div className={s.wrapper}>
+      <div className={s.menu}>
         <Menu showMenu={true} />
+        </div>
         <div className={s.content}>
           <div className={s.buttonBack} onClick={() => navigate(-1)}>
             <BackNavigateIcon /> Вернуться назад
