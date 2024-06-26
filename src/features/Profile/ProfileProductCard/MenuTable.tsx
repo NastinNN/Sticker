@@ -40,7 +40,7 @@ export const MenuTable = ({ id, isOpen }: MenuTableProps) => {
             <EyeIcon /> Просмотреть
           </>
         </NavLink>
-        <NavLink to={`${ROUTES.EDIT}/${id}`} className={s.dropMenuItem}>
+        <NavLink to={`${ROUTES.EDIT}?id=${id}`} className={s.dropMenuItem}>
           <PencilIcon /> Редактировать
         </NavLink>
         <div

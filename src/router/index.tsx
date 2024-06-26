@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         element: <CatalogPage />,
       },
       {
-        path: `${ROUTES.EDIT}/:id`,
+        path: `${ROUTES.EDIT}`,
         element: <EditPage />,
       },
       {
