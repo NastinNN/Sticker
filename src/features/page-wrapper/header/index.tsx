@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, KeyboardEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '../../../assets/icons/logoIcon';
 import { ROUTES } from '../../../router/routes';
@@ -13,6 +13,12 @@ export const Header = () => {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null!);
 
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if(event.key === 'Enter'){
+      if (inputRef.current.value !== '') navigate(`${ROUTES.CATALOG}?title=${inputRef.current.value}`);
+    }
+  };
+
   return (
     <header className={s.wrapper}>
       <Container>
@@ -26,7 +32,7 @@ export const Header = () => {
           <div className={s.centerSection}>
             {window.location.pathname !== ROUTES.CATALOG && window.location.pathname !== ROUTES.PROFILE && (
               <div className={s.seach}>
-                <input id="input" placeholder="Поиск" className={s.searchInput} ref={inputRef} type="text" />
+                <input id="input" placeholder="Поиск" className={s.searchInput} ref={inputRef} type="text" onKeyDown={handleKeyPress} />
                 <button
                   onClick={() => {
                     if (inputRef.current.value !== '') navigate(`${ROUTES.CATALOG}?title=${inputRef.current.value}`);

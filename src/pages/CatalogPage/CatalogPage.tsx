@@ -1,5 +1,5 @@
 import { Container } from 'features/page-wrapper/container';
-import { useRef, useState } from 'react';
+import { useRef, useState, KeyboardEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useGetProductPaginationQuery } from 'services/products';
 import { ButtonClean } from 'shared/components/Buttons/ButtonClean';
@@ -28,6 +28,19 @@ export const CatalogPage = () => {
 
   const { data, isLoading, isFetching } = useGetProductPaginationQuery({ category, filter, seach, page, limit });
 
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if(event.key === 'Enter'){
+      setSeach(inputRef.current.value);
+      setSeachParams(inputRef.current.value);
+      {
+        !inputRef.current.value ? params.delete('title') : params.set('title', inputRef.current.value);
+      }
+      setParams(params);
+      params.set('page', '1');
+      setParams(params);
+    }
+  };
+
   return (
     <div className={s.content}>
       <Container>
@@ -41,6 +54,7 @@ export const CatalogPage = () => {
               onChange={e => setSeachParams(e.target.value)}
               placeholder='Найти объявление'
               className={s.seachInput}
+              onKeyDown={handleKeyPress}
             />
             <ButtonClean state={seachParams} setState={setSeachParams} />
             <button

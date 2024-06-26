@@ -44,7 +44,7 @@ export const MainPage = () => {
 
             <div className={s.buttonWrapper}>
               <Link to={`${ROUTES.CATALOG}?category=${category}`} className={s.moreButton}>
-                <LoadIcon /> Загрузить еще
+                Перейти в каталог
               </Link>
             </div>
           </div>
