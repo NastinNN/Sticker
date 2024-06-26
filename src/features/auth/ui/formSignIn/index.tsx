@@ -104,7 +104,7 @@ export const SignInForm = () => {
           </FormHelperText>
           <Grid container>
             <Grid item xs></Grid>
-            <Grid item>
+            <Grid item sx={{paddingTop: "8px"}}>
               <Link to={`${ROUTES.RECOVERY}`} className={s.link}>
                 Забыли пароль?
               </Link>

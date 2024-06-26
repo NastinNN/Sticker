@@ -54,14 +54,8 @@ export const AuthForm = () => {
   if (token) return <Navigate to={ROUTES.PROFILE} />;
 
   return (
-    <Box
-      width={364}
-      sx={{
-        margin: '40px auto',
-        backgroundColor: '#ffffff',
-      }}
-    >
-      <div className={s.header}>
+    <div className={s.wrapper}>
+       <div className={s.header}>
         <p className={s.title}>Hello, world!</p>
         <p className={s.subtitle}>{value ? 'Пройдите авторизацию' : 'Создайте аккаунт'}</p>
       </div>
@@ -78,6 +72,6 @@ export const AuthForm = () => {
       <CustomTabPanel value={value} index={1}>
         <SignUpForm />
       </CustomTabPanel>
-    </Box>
+    </div>
   );
 };
