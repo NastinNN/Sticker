@@ -104,8 +104,6 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
             </Grid>
           </Grid>
 
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
               <Box width="100%" className={s.input}>
                 <label htmlFor="phone" className={s.label}>
                   Телефон
@@ -125,8 +123,6 @@ export const FormProduct = ({ formik, buttonText, isLoading }: FormProductProps)
                   helperText={formik.touched.phone && formik.errors.phone}
                 />
               </Box>
-            </Grid>
-          </Grid>
 
           <Box width="100%" className={s.input}>
             <label htmlFor="description" className={s.label}>
