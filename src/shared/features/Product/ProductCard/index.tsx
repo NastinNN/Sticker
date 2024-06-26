@@ -13,7 +13,7 @@ type ProductCardProps = {
 
 export const ProductCard = ({ productCard }: ProductCardProps) => {
   return (
-    <Link to={`${ROUTES.PRODUCT}/${productCard.id}`} className={s.wrapper}>
+    <Link to={`${ROUTES.PRODUCT}?id=${productCard.id}`} className={s.wrapper}>
       <div className={s.coverImage}>
             <img src={productCard.image} alt="cover" />
             <div className={s.mark}>{useParsCategory(productCard.category)}</div>

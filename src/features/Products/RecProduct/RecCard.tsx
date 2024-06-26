@@ -11,7 +11,7 @@ type RecCardProps = {
 export const RecCard = ({product}: RecCardProps) => {
   return (
     <>
-    <Link to={`${ROUTES.PRODUCT}/${product.id}`} className={s.card}>
+    <Link to={`${ROUTES.PRODUCT}?id=${product.id}`} className={s.card}>
       <div className={s.image}>
         <img src={product.image} alt="Rec Image"/>
       </div>

@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         element: <CreatePage />,
       },
       {
-        path: `${ROUTES.PRODUCT}/:id`,
+        path: `${ROUTES.PRODUCT}`,
         element: <ProductPage />,
       },
       {
