@@ -18,7 +18,7 @@ export type CreateProductParams = CreateProductForm & {
 export const сreateProductFormValidationScheme = object().shape({
   title: string()
   .min(3, 'Слишком короткое название объявления')
-  .max(125, 'Превышено допустимое количество символов')
+  .max(40, 'Превышено допустимое количество символов')
   .required('Укажите название')
   .default(''),
 

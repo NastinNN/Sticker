@@ -22,6 +22,7 @@
   width: 100%;
   table-layout: fixed;
   border-spacing: 0 8px;
+  padding-bottom: 90px;
 }
 
 .table th {
