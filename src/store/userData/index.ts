@@ -41,6 +41,7 @@ export const userDataSlice = createSlice({
     getUserId: state => state.userData.id,
     getUserName: state => state.userData.userName,
     getUserSurname: state => state.userData.userSurname,
+    getError: state => state.error
   },
   extraReducers: builder => {
     builder
@@ -60,7 +61,7 @@ export const userDataSlice = createSlice({
 
 export const { clearUserData } = userDataSlice.actions;
 
-export const { getIsLoading, getToken, getUserId, getUserName, getUserSurname } = userDataSlice.selectors;
+export const { getIsLoading, getToken, getUserId, getUserName, getUserSurname, getError } = userDataSlice.selectors;
 
 export const defineUserDataFromStorage = (): UserDataState => {
   const userData = getStorageItem(STORAGE_KEYS.USER_DATA);

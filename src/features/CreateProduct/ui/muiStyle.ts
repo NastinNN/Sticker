@@ -10,6 +10,8 @@ export const styles = {
     },
     "& .Mui-error": {
       color: "#d32f2f",
+      fontFamily: "Jost",
+      fontSize: "14px"
     },
     "& .MuiFilledInput-root.Mui-error": {
       borderColor: "#d32f2f",

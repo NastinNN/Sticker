@@ -17,10 +17,10 @@ import { useFormik } from 'formik';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'store';
-import { getIsLoading } from 'store/userData';
+import { getError, getIsLoading } from 'store/userData';
 import { postAuthData } from 'store/userData/effects';
 import { styles } from '../muiStyle';
 import { ROUTES } from 'router/routes';
@@ -31,6 +31,14 @@ import s from "../auth.module.css"
 export const SignInForm = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  const [errorResponse, setErrorResponse] = useState(false); 
+
+  useEffect(() => {
+    if (error)
+      setErrorResponse(true)
+  }, [error]);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -61,6 +69,7 @@ export const SignInForm = () => {
           gap: "16px",
         }}
       >
+        {errorResponse && <div className={s.error}>Неверный логин или пароль</div>}
         <TextField sx={styles.input}
           fullWidth
           variant="filled"
