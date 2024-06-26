@@ -109,7 +109,6 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  padding-left: 16px;
   align-items: center;
 
 
@@ -142,6 +141,24 @@
   position: relative;
 }
 
+.mobileMenuHidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0.4;
+  transition: all ease 0.34;
+}
+
+.mobileMenuHidden:hover {
+  opacity: 0.7;
+}
+
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 16px;
+}
+
 @media (max-width: 1180px) {
   .loginButtonTitle {
     display: none;
@@ -152,10 +169,19 @@
   .buttonCreateAd {
     display: none;
   }
+  .mobileMenuHidden:nth-child(2) {
+    display: flex;
+    visibility: visible;
+  }
 } 
 
 @media (max-width: 535px) {
   .seach {
     display: none;
+  }
+
+  .mobileMenuHidden:nth-child(1) {
+    display: flex;
+    visibility: visible;
   }
 } 

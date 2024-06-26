@@ -40,14 +40,13 @@ export const ProductView = ({ product }: ProductProps) => {
         <BackNavigateIcon />
       </div>
       <div className={s.content}>
-        <div className={s.contentHeader}>
-          <div className={s.leftSection}>
+          <div className={classes(s.infoSection, s.gap24)}>
             <p className={s.date}>{useParsDate(product.publication_date)}</p>
             <h2 className={s.title}>{product.title}</h2>
             <p className={s.id}>{product.articul}</p>
           </div>
 
-          <div className={s.rightSection}>
+          <div className={classes(s.gap24, s.priceSection)}>
             <p className={s.price}>{product.price.toLocaleString('ru-RU')} Р</p>
             <div className={s.phone}>
               <a
@@ -66,10 +65,9 @@ export const ProductView = ({ product }: ProductProps) => {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className={s.contentMain}>
-          <div className={s.leftSection}>
+
+          <div className={classes(s.imageSetion, s.gap24)}>
             <div className={s.views}>
               <EyeIcon />
               {product.views}
@@ -81,6 +79,9 @@ export const ProductView = ({ product }: ProductProps) => {
                 </div>
               </PhotoView>
             </PhotoProvider>
+            </div>
+            
+            <div className={classes(s.descSetion, s.gap24)}>
             <p className={s.textTitle}>Описание:</p>
             <p className={s.text}>{product.description}</p>
             <p className={s.textTitle}>
@@ -110,11 +111,10 @@ export const ProductView = ({ product }: ProductProps) => {
             </div>
           </div>
 
-          <div className={s.rightSection}>
+          <div className={classes(s.rec, s.gap24)}>
             <RecProduct category={product.category} id={product.id} />
           </div>
         </div>
       </div>
-    </div>
   );
 };

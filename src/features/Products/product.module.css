@@ -15,38 +15,13 @@
 
 .content {
   display: grid;
-  grid-template-rows: repeat(2, max-content);
-  row-gap: 24px;
   padding-top: 32px;
 }
 
-.contentHeader {
-  grid-row: 1;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 40px;
-}
-
-.leftSection {
-  grid-column: 1 / 9;
+.gap24 {
   display: flex;
   flex-direction: column;
   gap: 24px;
-}
-
-.rightSection {
-  grid-column: -1 / -5;
-  padding-left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contentMain {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 40px;
-  grid-row: 2;
 }
 
 
@@ -71,6 +46,7 @@
 }
 
 .views {
+  font-size: 18px;
   opacity: 0.4;
   display: flex;
   align-items: center;
@@ -135,12 +111,15 @@
   left: 0;
   z-index: 10;
 
+
   color: #ffffff;
   font-weight: 500;
   padding: 8px 24px;
   border-radius: 4px;
   background-color: var(--color-blue);
   opacity: 1;
+
+  white-space: nowrap;
 
   transition: all ease 0.3s;
 }
@@ -153,4 +132,125 @@
 .hiddenPhoneNotActive {
   opacity: 0;
   visibility: hidden;
+}
+
+@media (min-width: 1100px) {
+  .content {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, max-content);
+    column-gap: 40px;
+    row-gap: 24px;
+  }
+
+  .infoSection {
+    grid-row: 1;
+    grid-column: 1 / 9;
+  }
+  
+  .priceSection {
+    grid-row: 1;
+    grid-column: -1 / -4;
+  }
+  
+  .imageSetion {
+    grid-row: 2;
+    grid-column: 1 / 9;
+  }
+  
+  .descSetion {
+    grid-row: 3;
+    grid-column: 1 / 9;
+  }
+  
+  .rec {
+    grid-row: 2;
+    grid-column: -1 / -4;
+  }
+}
+
+@media (max-width: 1100px) {
+  .content {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, max-content);
+    column-gap: 40px;
+    row-gap: 24px;
+  }
+
+  .infoSection {
+    grid-row: 1;
+    grid-column: 1 / 9;
+  }
+  
+  .priceSection {
+    grid-row: 1;
+    grid-column: -1 / -4;
+  }
+  
+  
+  .imageSetion {
+    grid-row: 2;
+    grid-column: 1 / 13;
+  }
+  
+  .descSetion {
+    grid-row: 3;
+    grid-column: 1 / 13;
+  }
+
+  .rec {
+    grid-row: 4;
+    grid-column: 1 / 13;
+  }
+}
+
+@media (max-width: 768px) {
+  .gap24 {
+    gap: 16px;
+  }
+
+  .hiddenPhone {
+    left: -25px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, max-content);
+    row-gap: 24px;
+  }
+
+  .infoSection {
+    grid-row: 1; 
+    grid-column: 1;
+  }
+  
+  .imageSetion {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .priceSection {
+    grid-row: 3;
+    grid-column: 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .descSetion {
+    grid-row: 4;
+    grid-column: 1;
+  }
+
+  .rec {
+    grid-row: 5;
+    grid-column: 1;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .image {
+    height: 400px;
+  }
 }
