@@ -11,11 +11,11 @@ export type Product = {
   phone: string;
   location: string;
   status: boolean;
-  user: {
-    name: string;
-    surname: string;
-    email: string;
-    phone: string;
-    id: number;
-  };
+  user_id: number
+  // user: {
+  //   name: string;
+  //   surname: string;
+  //   email: string;
+  //   id: number;
+  // };
 };

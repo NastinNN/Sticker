@@ -17,6 +17,8 @@ type EditProps = {
 }
 
 export const EditProductForm = ({data, id}: EditProps) => {
+
+  const userId = useSelector(getUserId);
   
   const navigate = useNavigate();
   const [updateProduct, { isLoading: setLoading, isSuccess }] = useUpdateProductMutation();
@@ -36,6 +38,8 @@ export const EditProductForm = ({data, id}: EditProps) => {
       updateProduct({ ...val, id: Number(id) });
     },
   });
+
+  if (userId !== data.user_id) return <Navigate to={ROUTES.ERROR} />;
 
   return (
       <FormProduct formik={formik} buttonText="Изменить" isLoading={setLoading} />

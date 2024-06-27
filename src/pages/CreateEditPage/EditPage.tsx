@@ -22,6 +22,7 @@ export const EditPage = () => {
 
   if (id === "0" || isError) return <Navigate to={ROUTES.ERROR} />;
 
+
   return (
     <Container>
       <div className={s.wrapper}>
