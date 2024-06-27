@@ -9,15 +9,15 @@ import { FormProduct } from 'shared/features/FormOroduct';
 import { ROUTES } from '../../../router/routes';
 import { useGetProductQuery, useUpdateProductMutation } from '../../../services/products';
 import { getUserId } from '../../../store/userData';
+import { Product } from 'shared/types/product';
 
+type EditProps = {
+  data: Product;
+  id: string
+}
 
-
-export const EditProductForm = () => {
-  const [params] = useSearchParams();
-  const id = String(params.get('id') || '0');
-
-  const userId = useSelector(getUserId);
-
+export const EditProductForm = ({data, id}: EditProps) => {
+  
   const navigate = useNavigate();
   const [updateProduct, { isLoading: setLoading, isSuccess }] = useUpdateProductMutation();
 
@@ -28,7 +28,7 @@ export const EditProductForm = () => {
   }, [isSuccess, navigate]);
 
   const formik = useFormik({
-    initialValues: сreateProductFormValidationScheme.getDefault(),
+    initialValues: data,
     validationSchema: сreateProductFormValidationScheme,
     validateOnChange: false,
     validateOnBlur: false,
