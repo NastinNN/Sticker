@@ -14,10 +14,10 @@ import {
 } from '@mui/material';
 import { signUpFormValidationScheme } from 'features/auth/model/schemes/signUp';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'store';
-import { getIsLoading } from 'store/userData';
+import { getError, getIsLoading } from 'store/userData';
 import { postRegData } from 'store/userData/effects';
 
 import { Link } from 'react-router-dom';
@@ -29,6 +29,15 @@ import s from '../auth.module.css';
 export const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+
+  const [errorResponse, setErrorResponse] = useState(false); 
+
+  useEffect(() => {
+    if (error)
+      setErrorResponse(true)
+  }, [error]);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showCheckPassword, setShowCheckPassword] = useState(false);
@@ -60,6 +69,8 @@ export const SignUpForm = () => {
           gap: '16px',
         }}
       >
+        {errorResponse && <div className={s.error}>Пользователь с таким email уже существует</div>}
+
         <TextField
           sx={styles.input}
           fullWidth
