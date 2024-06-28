@@ -50,16 +50,16 @@ export const MenuTable = ({ id, isOpen }: MenuTableProps) => {
           <DeleteIcon /> Удалить
         </div>
       </div>
-      <Dialog
+      <Dialog sx={{fontFamily: "Jost"}}
         open={open}
         onClose={handleClose || handleDelete}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         >
-        <DialogTitle id="alert-dialog-title">Вы действительно хотите удалить данное объявление?</DialogTitle>
+        <DialogTitle  sx={{fontFamily: "Jost"}} id="alert-dialog-title">Вы действительно хотите удалить данное объявление?</DialogTitle>
         <DialogActions>
-          <Button onClick={handleDelete} >Да</Button>
-          <Button onClick={handleClose}>Нет</Button>
+          <Button  sx={{fontFamily: "Jost", color: "#3A95FF"}} onClick={handleDelete} >Да</Button>
+          <Button sx={{fontFamily: "Jost", color: "#3A95FF"}} onClick={handleClose}>Нет</Button>
           
         </DialogActions>
       </Dialog>
