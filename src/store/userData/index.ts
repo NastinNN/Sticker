@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { STORAGE_KEYS, getStorageItem } from '../../utils/storage';
-import { postAuthData } from './effects';
+import { postAuthData, postRegData } from './effects';
 
 type User = {
     userName: string | null;
@@ -15,6 +15,7 @@ type UserDataState = {
   userData: User;
   isLoading: boolean;
   error: string | null;
+  errorReg: string | null;
 };
 
 const initialState: UserDataState = {
@@ -27,6 +28,7 @@ const initialState: UserDataState = {
   },
   isLoading: false,
   error: null,
+  errorReg: null,
 };
 
 export const userDataSlice = createSlice({
@@ -41,7 +43,9 @@ export const userDataSlice = createSlice({
     getUserId: state => state.userData.id,
     getUserName: state => state.userData.userName,
     getUserSurname: state => state.userData.userSurname,
-    getError: state => state.error
+    getError: state => state.error,
+
+    getErrorReg: state => state.errorReg
   },
   extraReducers: builder => {
     builder
@@ -55,13 +59,18 @@ export const userDataSlice = createSlice({
       .addCase(postAuthData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || 'Что-то пошло не так';
-      });
+      })
+
+      .addCase(postRegData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errorReg = action.error.message || 'Что-то пошло не так';
+      })
   },
 });
 
 export const { clearUserData } = userDataSlice.actions;
 
-export const { getIsLoading, getToken, getUserId, getUserName, getUserSurname, getError } = userDataSlice.selectors;
+export const { getIsLoading, getToken, getUserId, getUserName, getUserSurname, getError, getErrorReg } = userDataSlice.selectors;
 
 export const defineUserDataFromStorage = (): UserDataState => {
   const userData = getStorageItem(STORAGE_KEYS.USER_DATA);

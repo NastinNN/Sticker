@@ -13,7 +13,7 @@ export const postAuthData = createAsyncThunk('userData/postAuth', async (payload
   return userData;
 });
 
-export const postRegData = createAsyncThunk('userData/postAuth', async (payload: RegFormData) => {
+export const postRegData = createAsyncThunk('userData/postReg', async (payload: RegFormData) => {
   const {
     data: { data, token },
   } = await post<AuthResponse>(`/register`, payload);

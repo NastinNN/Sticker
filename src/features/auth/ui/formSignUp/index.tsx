@@ -17,7 +17,7 @@ import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'store';
-import { getError, getIsLoading } from 'store/userData';
+import { getError, getErrorReg, getIsLoading } from 'store/userData';
 import { postRegData } from 'store/userData/effects';
 
 import { Link } from 'react-router-dom';
@@ -29,7 +29,7 @@ import s from '../auth.module.css';
 export const SignUpForm = () => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const error = useSelector(getErrorReg);
 
 
   const [errorResponse, setErrorResponse] = useState(false); 
